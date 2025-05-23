@@ -17,26 +17,26 @@ part 'ucids_tokens.g.dart';
 /// );
 /// ```
 @freezed
-class UcidsTokens with _$UcidsTokens {
+abstract class UcidsTokens with _$UcidsTokens {
   /// Creates a new [UcidsTokens] instance.
   ///
   /// [mainnet], [testnet], and [devnet] are required and represent UCID mappings
   /// for their respective networks.
   const factory UcidsTokens({
     /// A map of cryptocurrency names to their UCIDs on the Mainnet.
-    required Map<String, int> mainnet,
+    required final Map<String, int> mainnet,
 
     /// A map of cryptocurrency names to their UCIDs on the Testnet.
-    required Map<String, int> testnet,
+    required final Map<String, int> testnet,
 
     /// A map of cryptocurrency names to their UCIDs on the Devnet.
-    required Map<String, int> devnet,
+    required final Map<String, int> devnet,
   }) = _UcidsTokens;
 
   /// Creates a [UcidsTokens] instance from a JSON object.
   ///
   /// This factory method is used for deserializing JSON data into a
   /// [UcidsTokens] instance.
-  factory UcidsTokens.fromJson(Map<String, dynamic> json) =>
+  factory UcidsTokens.fromJson(final Map<String, dynamic> json) =>
       _$UcidsTokensFromJson(json);
 }

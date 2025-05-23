@@ -3,20 +3,17 @@ import 'dart:async';
 import 'package:archethic_dapp_framework_flutter/src/domain/models/failures.dart';
 
 extension _DurationTimeoutFuture on Duration {
-  Future<void> get toTimeoutFuture => Future.delayed(
-        this,
-        () {
-          throw const Timeout();
-        },
-      );
+  Future<void> get toTimeoutFuture => Future.delayed(this, () {
+    throw const Timeout();
+  });
 }
 
 class PeriodicFuture {
   static Future<T> periodic<T>(
-    FutureOr<T> Function() action, {
-    required Duration sleepDuration,
-    required bool Function(T value) until,
-    Duration? timeout,
+    final FutureOr<T> Function() action, {
+    required final Duration sleepDuration,
+    required final bool Function(T value) until,
+    final Duration? timeout,
   }) async {
     final timeoutFuture = timeout?.toTimeoutFuture;
 
@@ -26,12 +23,10 @@ class PeriodicFuture {
       if (until(result)) {
         return false;
       }
-      await Future.any(
-        [
-          Future.delayed(sleepDuration),
-          if (timeoutFuture != null) timeoutFuture,
-        ],
-      );
+      await Future.any([
+        Future.delayed(sleepDuration),
+        if (timeoutFuture != null) timeoutFuture,
+      ]);
       return true;
     });
     return result;

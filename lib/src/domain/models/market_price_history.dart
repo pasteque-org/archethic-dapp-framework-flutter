@@ -40,35 +40,36 @@ class PriceHistoryValueConverter
   const PriceHistoryValueConverter();
 
   @override
-  PriceHistoryValue fromJson(Map<String, dynamic> json) {
+  PriceHistoryValue fromJson(final Map<String, dynamic> json) {
     return PriceHistoryValue.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(PriceHistoryValue object) => object.toJson();
+  Map<String, dynamic> toJson(final PriceHistoryValue object) =>
+      object.toJson();
 }
 
 /// Represents a single entry in the price history of a market asset.
 ///
 /// Each entry includes the price of the asset at a specific time.
 @freezed
-class PriceHistoryValue with _$PriceHistoryValue {
+abstract class PriceHistoryValue with _$PriceHistoryValue {
   /// Creates a [PriceHistoryValue].
   ///
   /// The [price] represents the value of the asset, and [time] represents
   /// the exact time of the price point.
   const factory PriceHistoryValue({
     /// The price of the asset at the specified time.
-    required num price,
+    required final num price,
 
     /// The timestamp for the price entry.
-    required DateTime time,
+    required final DateTime time,
   }) = _PriceHistoryValue;
 
   /// Creates a [PriceHistoryValue] from a JSON object.
   ///
   /// This factory method is used to deserialize JSON data into a
   /// [PriceHistoryValue] instance.
-  factory PriceHistoryValue.fromJson(Map<String, dynamic> json) =>
+  factory PriceHistoryValue.fromJson(final Map<String, dynamic> json) =>
       _$PriceHistoryValueFromJson(json);
 }

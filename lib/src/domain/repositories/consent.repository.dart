@@ -1,5 +1,5 @@
 abstract class ConsentRepository {
-  Future<void> addAddress(String v);
+  Future<void> addAddress(final String v);
 
-  Future<DateTime?> getConsentTime(String v);
+  Future<DateTime?> getConsentTime(final String v);
 }

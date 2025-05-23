@@ -31,7 +31,7 @@ extension FutureResult<ValueT, FailureT extends Exception>
 abstract class VoidResult<FailureT extends Exception>
     extends Result<void, FailureT> {
   const factory VoidResult.success() = _VoidSuccess;
-  const factory VoidResult.failure(FailureT failure) = _VoidFailure;
+  const factory VoidResult.failure(final FailureT failure) = _VoidFailure;
 }
 
 class _VoidSuccess<FailureT extends Exception> implements VoidResult<FailureT> {
@@ -48,10 +48,9 @@ class _VoidSuccess<FailureT extends Exception> implements VoidResult<FailureT> {
 
   @override
   T map<T>({
-    required T Function(void value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      success(null);
+    required final T Function(void value) success,
+    required final T Function(FailureT failure) failure,
+  }) => success(null);
 
   @override
   void get valueOrNull {}
@@ -61,10 +60,9 @@ class _VoidSuccess<FailureT extends Exception> implements VoidResult<FailureT> {
 
   @override
   Future<T> asyncMap<T>({
-    required Future<T> Function(void value) success,
-    required Future<T> Function(FailureT failure) failure,
-  }) async =>
-      success(null);
+    required final Future<T> Function(void value) success,
+    required final Future<T> Function(FailureT failure) failure,
+  }) => success(null);
 }
 
 class _VoidFailure<FailureT extends Exception> implements VoidResult<FailureT> {
@@ -83,10 +81,9 @@ class _VoidFailure<FailureT extends Exception> implements VoidResult<FailureT> {
 
   @override
   T map<T>({
-    required T Function(void value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      failure(_failure);
+    required final T Function(void value) success,
+    required final T Function(FailureT failure) failure,
+  }) => failure(_failure);
 
   @override
   void get valueOrNull {}
@@ -98,18 +95,17 @@ class _VoidFailure<FailureT extends Exception> implements VoidResult<FailureT> {
 
   @override
   Future<T> asyncMap<T>({
-    required Future<T> Function(void value) success,
-    required Future<T> Function(FailureT failure) failure,
-  }) async =>
-      failure(_failure);
+    required final Future<T> Function(void value) success,
+    required final Future<T> Function(FailureT failure) failure,
+  }) => failure(_failure);
 }
 
 /// An operation's result.
 /// Can be a success or a failure.
 @immutable
 abstract class Result<ValueT, FailureT extends Exception> {
-  const factory Result.success(ValueT value) = _Success;
-  const factory Result.failure(FailureT failure) = _Failure;
+  const factory Result.success(final ValueT value) = _Success;
+  const factory Result.failure(final FailureT failure) = _Failure;
 
   ValueT? get valueOrNull;
   FailureT? get failureOrNull;
@@ -118,13 +114,13 @@ abstract class Result<ValueT, FailureT extends Exception> {
   bool get isFailure;
 
   T map<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
   });
 
   Future<T> asyncMap<T>({
-    required Future<T> Function(ValueT value) success,
-    required Future<T> Function(FailureT failure) failure,
+    required final Future<T> Function(ValueT value) success,
+    required final Future<T> Function(FailureT failure) failure,
   });
 
   /// Returns the value if it is a success.
@@ -137,18 +133,15 @@ abstract class Result<ValueT, FailureT extends Exception> {
   ///    - expected error type is [Failure].
   ///    - you don't need to handle specific error cases.
   static Future<Result<ValueT, Failure>> guard<ValueT>(
-    Future<ValueT> Function() run,
+    final Future<ValueT> Function() run,
   ) async {
     try {
       return Result.success(await run());
     } on Failure catch (e) {
       return Result.failure(e);
-    } catch (e, stack) {
+    } on Exception catch (e, stack) {
       return Result.failure(
-        Failure.other(
-          cause: e.toString(),
-          stack: stack.toString(),
-        ),
+        Failure.other(cause: e.toString(), stack: stack.toString()),
       );
     }
   }
@@ -177,17 +170,15 @@ class _Success<ValueT, FailureT extends Exception>
 
   @override
   T map<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      success(_value);
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
+  }) => success(_value);
 
   @override
   Future<T> asyncMap<T>({
-    required Future<T> Function(ValueT value) success,
-    required Future<T> Function(FailureT failure) failure,
-  }) async =>
-      success(_value);
+    required final Future<T> Function(ValueT value) success,
+    required final Future<T> Function(FailureT failure) failure,
+  }) => success(_value);
 }
 
 class _Failure<ValueT, FailureT extends Exception>
@@ -213,15 +204,13 @@ class _Failure<ValueT, FailureT extends Exception>
 
   @override
   T map<T>({
-    required T Function(ValueT value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      failure(_failure);
+    required final T Function(ValueT value) success,
+    required final T Function(FailureT failure) failure,
+  }) => failure(_failure);
 
   @override
   Future<T> asyncMap<T>({
-    required Future<T> Function(ValueT value) success,
-    required Future<T> Function(FailureT failure) failure,
-  }) async =>
-      failure(_failure);
+    required final Future<T> Function(ValueT value) success,
+    required final Future<T> Function(FailureT failure) failure,
+  }) => failure(_failure);
 }

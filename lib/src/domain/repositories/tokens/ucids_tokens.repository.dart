@@ -4,5 +4,7 @@ import 'package:archethic_dapp_framework_flutter/src/domain/models/ucids_tokens.
 abstract class UcidsTokensRepositoryInterface {
   Future<UcidsTokens> getUcidsTokens();
 
-  Future<Map<String, int>> getUcidsTokensFromNetwork(Environment environment);
+  Future<Map<String, int>> getUcidsTokensFromNetwork(
+    final Environment environment,
+  );
 }

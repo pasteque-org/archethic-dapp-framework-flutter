@@ -23,7 +23,7 @@ class InProgressInfosBanner extends StatelessWidget {
   final String? failureMessage;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (failure != null && failureMessage != null) {
       return InfoBanner(
         failureMessage!,
@@ -32,7 +32,7 @@ class InProgressInfosBanner extends StatelessWidget {
       );
     }
 
-    if (walletConfirmation == true) {
+    if (walletConfirmation) {
       return InfoBanner(
         walletConfirmationTxt,
         InfoBannerType.request,
@@ -40,7 +40,7 @@ class InProgressInfosBanner extends StatelessWidget {
       );
     }
 
-    if (failure == null && isProcessInProgress == false) {
+    if (failure == null && !isProcessInProgress) {
       return InfoBanner(
         successTxt,
         InfoBannerType.success,

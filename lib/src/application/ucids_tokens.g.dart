@@ -6,7 +6,7 @@ part of 'ucids_tokens.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ucidsTokensHash() => r'7b1be27e366d2e26ea4b641f49192e9af3c8e2bc';
+String _$ucidsTokensHash() => r'175ba137547c4c181c31f3b28026b39e89d2d55e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,21 +39,15 @@ class _UcidsTokensFamily extends Family<AsyncValue<Map<String, int>>> {
   const _UcidsTokensFamily();
 
   /// See also [_ucidsTokens].
-  _UcidsTokensProvider call({
-    Environment? environment,
-  }) {
-    return _UcidsTokensProvider(
-      environment: environment,
-    );
+  _UcidsTokensProvider call({Environment? environment}) {
+    return _UcidsTokensProvider(environment: environment);
   }
 
   @override
   _UcidsTokensProvider getProviderOverride(
     covariant _UcidsTokensProvider provider,
   ) {
-    return call(
-      environment: provider.environment,
-    );
+    return call(environment: provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class _UcidsTokensFamily extends Family<AsyncValue<Map<String, int>>> {
 /// See also [_ucidsTokens].
 class _UcidsTokensProvider extends AutoDisposeFutureProvider<Map<String, int>> {
   /// See also [_ucidsTokens].
-  _UcidsTokensProvider({
-    Environment? environment,
-  }) : this._internal(
-          (ref) => _ucidsTokens(
-            ref as _UcidsTokensRef,
-            environment: environment,
-          ),
-          from: _ucidsTokensProvider,
-          name: r'_ucidsTokensProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$ucidsTokensHash,
-          dependencies: _UcidsTokensFamily._dependencies,
-          allTransitiveDependencies:
-              _UcidsTokensFamily._allTransitiveDependencies,
-          environment: environment,
-        );
+  _UcidsTokensProvider({Environment? environment})
+    : this._internal(
+        (ref) => _ucidsTokens(ref as _UcidsTokensRef, environment: environment),
+        from: _ucidsTokensProvider,
+        name: r'_ucidsTokensProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$ucidsTokensHash,
+        dependencies: _UcidsTokensFamily._dependencies,
+        allTransitiveDependencies:
+            _UcidsTokensFamily._allTransitiveDependencies,
+        environment: environment,
+      );
 
   _UcidsTokensProvider._internal(
     super._createNotifier, {
@@ -158,7 +148,7 @@ class _UcidsTokensProviderElement
   Environment? get environment => (origin as _UcidsTokensProvider).environment;
 }
 
-String _$ucidHash() => r'4ebdadf9d4949befd9f859e31f1c95fa59509417';
+String _$ucidHash() => r'0638e3d39ada66456d02f7fe3b14c0b4a1f8ff46';
 
 /// See also [_ucid].
 @ProviderFor(_ucid)
@@ -170,24 +160,13 @@ class _UcidFamily extends Family<AsyncValue<int?>> {
   const _UcidFamily();
 
   /// See also [_ucid].
-  _UcidProvider call({
-    required String address,
-    Environment? environment,
-  }) {
-    return _UcidProvider(
-      address: address,
-      environment: environment,
-    );
+  _UcidProvider call({required String address, Environment? environment}) {
+    return _UcidProvider(address: address, environment: environment);
   }
 
   @override
-  _UcidProvider getProviderOverride(
-    covariant _UcidProvider provider,
-  ) {
-    return call(
-      address: provider.address,
-      environment: provider.environment,
-    );
+  _UcidProvider getProviderOverride(covariant _UcidProvider provider) {
+    return call(address: provider.address, environment: provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -208,24 +187,19 @@ class _UcidFamily extends Family<AsyncValue<int?>> {
 /// See also [_ucid].
 class _UcidProvider extends AutoDisposeFutureProvider<int?> {
   /// See also [_ucid].
-  _UcidProvider({
-    required String address,
-    Environment? environment,
-  }) : this._internal(
-          (ref) => _ucid(
-            ref as _UcidRef,
-            address: address,
-            environment: environment,
-          ),
-          from: _ucidProvider,
-          name: r'_ucidProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$ucidHash,
-          dependencies: _UcidFamily._dependencies,
-          allTransitiveDependencies: _UcidFamily._allTransitiveDependencies,
-          address: address,
-          environment: environment,
-        );
+  _UcidProvider({required String address, Environment? environment})
+    : this._internal(
+        (ref) =>
+            _ucid(ref as _UcidRef, address: address, environment: environment),
+        from: _ucidProvider,
+        name: r'_ucidProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$ucidHash,
+        dependencies: _UcidFamily._dependencies,
+        allTransitiveDependencies: _UcidFamily._allTransitiveDependencies,
+        address: address,
+        environment: environment,
+      );
 
   _UcidProvider._internal(
     super._createNotifier, {
@@ -242,9 +216,7 @@ class _UcidProvider extends AutoDisposeFutureProvider<int?> {
   final Environment? environment;
 
   @override
-  Override overrideWith(
-    FutureOr<int?> Function(_UcidRef provider) create,
-  ) {
+  Override overrideWith(FutureOr<int?> Function(_UcidRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: _UcidProvider._internal(
@@ -303,24 +275,25 @@ class _UcidProviderElement extends AutoDisposeFutureProviderElement<int?>
 }
 
 String _$ucidsTokensRepositoryHash() =>
-    r'3ed9d212ff21a0982591184a165bb4e9d4e103a8';
+    r'394c558259edf2d2f03b089920b8b65e68c7eb30';
 
 /// See also [_ucidsTokensRepository].
 @ProviderFor(_ucidsTokensRepository)
 final _ucidsTokensRepositoryProvider =
     AutoDisposeProvider<UcidsTokensRepositoryImpl>.internal(
-  _ucidsTokensRepository,
-  name: r'_ucidsTokensRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$ucidsTokensRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      _ucidsTokensRepository,
+      name: r'_ucidsTokensRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$ucidsTokensRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef _UcidsTokensRepositoryRef
-    = AutoDisposeProviderRef<UcidsTokensRepositoryImpl>;
+typedef _UcidsTokensRepositoryRef =
+    AutoDisposeProviderRef<UcidsTokensRepositoryImpl>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

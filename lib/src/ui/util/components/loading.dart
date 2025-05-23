@@ -4,9 +4,6 @@ class Loading extends StatelessWidget {
   const Loading({super.key});
 
   @override
-  Widget build(BuildContext context) => const Center(
-        child: CircularProgressIndicator(
-          strokeWidth: 1,
-        ),
-      );
+  Widget build(final BuildContext context) =>
+      const Center(child: CircularProgressIndicator(strokeWidth: 1));
 }

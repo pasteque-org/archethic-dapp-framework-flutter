@@ -7,8 +7,8 @@ part 'version.g.dart';
 
 @riverpod
 Future<String> versionString(
-  Ref ref,
-  AppLocalizations localizations,
+  final Ref ref,
+  final AppLocalizations localizations,
 ) async {
   final packageInfo = await PackageInfo.fromPlatform();
   return '${localizations.aedappfm_version} ${packageInfo.version} - ${localizations.aedappfm_build} ${packageInfo.buildNumber}';

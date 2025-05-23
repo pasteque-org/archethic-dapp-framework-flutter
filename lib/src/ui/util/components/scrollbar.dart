@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ArchethicScrollbar extends StatefulWidget {
   const ArchethicScrollbar({
-    super.key,
     required this.child,
+    super.key,
     this.scrollPhysics,
     this.thumbVisibility = true,
   });
@@ -32,7 +32,7 @@ class _ArchethicScrollbarState extends State<ArchethicScrollbar> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scrollbar(
       controller: scrollController,
       thumbVisibility: widget.thumbVisibility,

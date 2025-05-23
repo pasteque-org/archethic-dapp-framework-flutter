@@ -19,7 +19,7 @@ class ButtonClose extends ConsumerWidget {
   final List<double> dimens;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     return AppButton(
       backgroundGradient: backgroundGradient,
       labelBtn: AppLocalizations.of(context)!.aedappfm_btn_close,

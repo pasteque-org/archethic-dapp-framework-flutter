@@ -4,10 +4,10 @@ import 'package:hive/hive.dart';
 class HiveConsentDatasource {
   HiveConsentDatasource._(this._box);
 
-  static const String _consentBox = 'consentBox';
+  static const _consentBox = 'consentBox';
   final Box<dynamic> _box;
 
-  static const String hashAddresses = 'archethic_consent_hash_addresses';
+  static const hashAddresses = 'archethic_consent_hash_addresses';
 
   // This doesn't have to be a singleton.
   // We just want to make sure that the box is open, before we start getting/setting objects on it
@@ -16,7 +16,7 @@ class HiveConsentDatasource {
     return HiveConsentDatasource._(box);
   }
 
-  Future<void> addAddress(String v) async {
+  Future<void> addAddress(final String v) async {
     if (getConsentTime(v) != null) {
       return;
     }
@@ -36,20 +36,19 @@ class HiveConsentDatasource {
     return result;
   }
 
-  DateTime? getConsentTime(String v) {
+  DateTime? getConsentTime(final String v) {
     final vHashed = uint8ListToHex(hash(v.toUpperCase()));
-    DateTime? _datetime;
+    DateTime? datetime;
 
     final addresses = getAddresses();
     for (final address in addresses) {
       final parts = address.split('|');
       if (parts[0] == vHashed && int.tryParse(parts[1]) != null) {
-        _datetime =
-            DateTime.fromMillisecondsSinceEpoch(int.tryParse(parts[1])!);
+        datetime = DateTime.fromMillisecondsSinceEpoch(int.tryParse(parts[1])!);
       }
     }
 
-    return _datetime;
+    return datetime;
   }
 
   Future<void> clearAll() async {

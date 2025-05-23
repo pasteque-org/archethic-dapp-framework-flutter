@@ -21,10 +21,10 @@ class IconAnimated extends ConsumerStatefulWidget {
 }
 
 class IconAnimatedState extends ConsumerState<IconAnimated> {
-  bool _over = false;
+  var _over = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -36,20 +36,21 @@ class IconAnimatedState extends ConsumerState<IconAnimated> {
           _over = false;
         });
       },
-      child: widget.tooltip.isEmpty
-          ? Icon(
-              widget.icon,
-              size: widget.iconSize,
-              color: widget.color,
-            ).animate(target: _over ? 1 : 0).scaleXY(end: 1.3)
-          : Tooltip(
-              message: widget.tooltip,
-              child: Icon(
+      child:
+          widget.tooltip.isEmpty
+              ? Icon(
                 widget.icon,
                 size: widget.iconSize,
                 color: widget.color,
-              ).animate(target: _over ? 1 : 0).scaleXY(end: 1.3),
-            ),
+              ).animate(target: _over ? 1 : 0).scaleXY(end: 1.3)
+              : Tooltip(
+                message: widget.tooltip,
+                child: Icon(
+                  widget.icon,
+                  size: widget.iconSize,
+                  color: widget.color,
+                ).animate(target: _over ? 1 : 0).scaleXY(end: 1.3),
+              ),
     );
   }
 }

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class ButtonConfirmBack extends StatelessWidget {
   const ButtonConfirmBack({
-    super.key,
     required this.title,
     required this.onPressed,
+    super.key,
   });
 
   final String title;
   final VoidCallback? onPressed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Stack(
       children: [
         Center(
@@ -20,9 +20,7 @@ class ButtonConfirmBack extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        BackButton(
-          onPressed: onPressed,
-        ),
+        BackButton(onPressed: onPressed),
       ],
     );
   }

@@ -7,7 +7,7 @@ part of 'verified_tokens.dart';
 // **************************************************************************
 
 String _$verifiedTokensRepositoryHash() =>
-    r'ab387489895918941c15e73ecc866e6e15346543';
+    r'0fc06e1771b889503a3cdd5e9838fbc383dcf723';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,21 +41,15 @@ class _VerifiedTokensRepositoryFamily
   const _VerifiedTokensRepositoryFamily();
 
   /// See also [_verifiedTokensRepository].
-  _VerifiedTokensRepositoryProvider call(
-    Environment environment,
-  ) {
-    return _VerifiedTokensRepositoryProvider(
-      environment,
-    );
+  _VerifiedTokensRepositoryProvider call(Environment environment) {
+    return _VerifiedTokensRepositoryProvider(environment);
   }
 
   @override
   _VerifiedTokensRepositoryProvider getProviderOverride(
     covariant _VerifiedTokensRepositoryProvider provider,
   ) {
-    return call(
-      provider.environment,
-    );
+    return call(provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,24 +71,23 @@ class _VerifiedTokensRepositoryFamily
 class _VerifiedTokensRepositoryProvider
     extends AutoDisposeProvider<VerifiedTokensRepositoryInterface> {
   /// See also [_verifiedTokensRepository].
-  _VerifiedTokensRepositoryProvider(
-    Environment environment,
-  ) : this._internal(
-          (ref) => _verifiedTokensRepository(
-            ref as _VerifiedTokensRepositoryRef,
-            environment,
-          ),
-          from: _verifiedTokensRepositoryProvider,
-          name: r'_verifiedTokensRepositoryProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$verifiedTokensRepositoryHash,
-          dependencies: _VerifiedTokensRepositoryFamily._dependencies,
-          allTransitiveDependencies:
-              _VerifiedTokensRepositoryFamily._allTransitiveDependencies,
-          environment: environment,
-        );
+  _VerifiedTokensRepositoryProvider(Environment environment)
+    : this._internal(
+        (ref) => _verifiedTokensRepository(
+          ref as _VerifiedTokensRepositoryRef,
+          environment,
+        ),
+        from: _verifiedTokensRepositoryProvider,
+        name: r'_verifiedTokensRepositoryProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$verifiedTokensRepositoryHash,
+        dependencies: _VerifiedTokensRepositoryFamily._dependencies,
+        allTransitiveDependencies:
+            _VerifiedTokensRepositoryFamily._allTransitiveDependencies,
+        environment: environment,
+      );
 
   _VerifiedTokensRepositoryProvider._internal(
     super._createNotifier, {
@@ -111,8 +104,9 @@ class _VerifiedTokensRepositoryProvider
   @override
   Override overrideWith(
     VerifiedTokensRepositoryInterface Function(
-            _VerifiedTokensRepositoryRef provider)
-        create,
+      _VerifiedTokensRepositoryRef provider,
+    )
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -130,7 +124,7 @@ class _VerifiedTokensRepositoryProvider
 
   @override
   AutoDisposeProviderElement<VerifiedTokensRepositoryInterface>
-      createElement() {
+  createElement() {
     return _VerifiedTokensRepositoryProviderElement(this);
   }
 
@@ -168,7 +162,7 @@ class _VerifiedTokensRepositoryProviderElement
 }
 
 String _$verifiedTokensByNetworkHash() =>
-    r'f1db2b5a32e6b1d92e1f080e7e31a9d8ea142fe4';
+    r'0fc792dd213f6c5469cd5ff3810f2b846c8f8894';
 
 /// See also [_verifiedTokensByNetwork].
 @ProviderFor(_verifiedTokensByNetwork)
@@ -180,21 +174,15 @@ class _VerifiedTokensByNetworkFamily extends Family<AsyncValue<List<String>>> {
   const _VerifiedTokensByNetworkFamily();
 
   /// See also [_verifiedTokensByNetwork].
-  _VerifiedTokensByNetworkProvider call(
-    Environment environment,
-  ) {
-    return _VerifiedTokensByNetworkProvider(
-      environment,
-    );
+  _VerifiedTokensByNetworkProvider call(Environment environment) {
+    return _VerifiedTokensByNetworkProvider(environment);
   }
 
   @override
   _VerifiedTokensByNetworkProvider getProviderOverride(
     covariant _VerifiedTokensByNetworkProvider provider,
   ) {
-    return call(
-      provider.environment,
-    );
+    return call(provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -216,24 +204,23 @@ class _VerifiedTokensByNetworkFamily extends Family<AsyncValue<List<String>>> {
 class _VerifiedTokensByNetworkProvider
     extends AutoDisposeFutureProvider<List<String>> {
   /// See also [_verifiedTokensByNetwork].
-  _VerifiedTokensByNetworkProvider(
-    Environment environment,
-  ) : this._internal(
-          (ref) => _verifiedTokensByNetwork(
-            ref as _VerifiedTokensByNetworkRef,
-            environment,
-          ),
-          from: _verifiedTokensByNetworkProvider,
-          name: r'_verifiedTokensByNetworkProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$verifiedTokensByNetworkHash,
-          dependencies: _VerifiedTokensByNetworkFamily._dependencies,
-          allTransitiveDependencies:
-              _VerifiedTokensByNetworkFamily._allTransitiveDependencies,
-          environment: environment,
-        );
+  _VerifiedTokensByNetworkProvider(Environment environment)
+    : this._internal(
+        (ref) => _verifiedTokensByNetwork(
+          ref as _VerifiedTokensByNetworkRef,
+          environment,
+        ),
+        from: _verifiedTokensByNetworkProvider,
+        name: r'_verifiedTokensByNetworkProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$verifiedTokensByNetworkHash,
+        dependencies: _VerifiedTokensByNetworkFamily._dependencies,
+        allTransitiveDependencies:
+            _VerifiedTokensByNetworkFamily._allTransitiveDependencies,
+        environment: environment,
+      );
 
   _VerifiedTokensByNetworkProvider._internal(
     super._createNotifier, {
@@ -250,7 +237,7 @@ class _VerifiedTokensByNetworkProvider
   @override
   Override overrideWith(
     FutureOr<List<String>> Function(_VerifiedTokensByNetworkRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -304,7 +291,7 @@ class _VerifiedTokensByNetworkProviderElement
       (origin as _VerifiedTokensByNetworkProvider).environment;
 }
 
-String _$isVerifiedTokenHash() => r'df6167474a17c69a944cf0450a794020f0d88a56';
+String _$isVerifiedTokenHash() => r'3945e89dc4fa6d747e989b7b8df00d3422d02025';
 
 /// See also [_isVerifiedToken].
 @ProviderFor(_isVerifiedToken)
@@ -316,24 +303,15 @@ class _IsVerifiedTokenFamily extends Family<AsyncValue<bool>> {
   const _IsVerifiedTokenFamily();
 
   /// See also [_isVerifiedToken].
-  _IsVerifiedTokenProvider call(
-    Environment environment,
-    String address,
-  ) {
-    return _IsVerifiedTokenProvider(
-      environment,
-      address,
-    );
+  _IsVerifiedTokenProvider call(Environment environment, String address) {
+    return _IsVerifiedTokenProvider(environment, address);
   }
 
   @override
   _IsVerifiedTokenProvider getProviderOverride(
     covariant _IsVerifiedTokenProvider provider,
   ) {
-    return call(
-      provider.environment,
-      provider.address,
-    );
+    return call(provider.environment, provider.address);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -354,27 +332,22 @@ class _IsVerifiedTokenFamily extends Family<AsyncValue<bool>> {
 /// See also [_isVerifiedToken].
 class _IsVerifiedTokenProvider extends AutoDisposeFutureProvider<bool> {
   /// See also [_isVerifiedToken].
-  _IsVerifiedTokenProvider(
-    Environment environment,
-    String address,
-  ) : this._internal(
-          (ref) => _isVerifiedToken(
-            ref as _IsVerifiedTokenRef,
-            environment,
-            address,
-          ),
-          from: _isVerifiedTokenProvider,
-          name: r'_isVerifiedTokenProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$isVerifiedTokenHash,
-          dependencies: _IsVerifiedTokenFamily._dependencies,
-          allTransitiveDependencies:
-              _IsVerifiedTokenFamily._allTransitiveDependencies,
-          environment: environment,
-          address: address,
-        );
+  _IsVerifiedTokenProvider(Environment environment, String address)
+    : this._internal(
+        (ref) =>
+            _isVerifiedToken(ref as _IsVerifiedTokenRef, environment, address),
+        from: _isVerifiedTokenProvider,
+        name: r'_isVerifiedTokenProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$isVerifiedTokenHash,
+        dependencies: _IsVerifiedTokenFamily._dependencies,
+        allTransitiveDependencies:
+            _IsVerifiedTokenFamily._allTransitiveDependencies,
+        environment: environment,
+        address: address,
+      );
 
   _IsVerifiedTokenProvider._internal(
     super._createNotifier, {
@@ -442,7 +415,8 @@ mixin _IsVerifiedTokenRef on AutoDisposeFutureProviderRef<bool> {
 }
 
 class _IsVerifiedTokenProviderElement
-    extends AutoDisposeFutureProviderElement<bool> with _IsVerifiedTokenRef {
+    extends AutoDisposeFutureProviderElement<bool>
+    with _IsVerifiedTokenRef {
   _IsVerifiedTokenProviderElement(super.provider);
 
   @override
@@ -451,5 +425,6 @@ class _IsVerifiedTokenProviderElement
   @override
   String get address => (origin as _IsVerifiedTokenProvider).address;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

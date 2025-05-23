@@ -7,7 +7,7 @@ import 'package:logging/logging.dart';
 
 /// [LoggerOutput] is used to fine tune log level sent to standard output.
 class LoggerOutput {
-  static void setup({Level? level}) {
+  static void setup({final Level? level}) {
     Logger.root.level = level ?? (kDebugMode ? Level.ALL : Level.SEVERE);
 
     /// Note : When in debug mode, logs are displayed
@@ -21,7 +21,7 @@ class LoggerOutput {
     Logger.root.clearListeners();
 
     if (kIsWeb) {
-      Logger.root.onRecord.listen((event) {
+      Logger.root.onRecord.listen((final event) {
         print(
           '${event.time.toIso8601String()} [${event.loggerName}] ${event.message}',
         );
@@ -35,7 +35,7 @@ class LoggerOutput {
     }
 
     if (!kIsWeb) {
-      Logger.root.onRecord.listen((event) {
+      Logger.root.onRecord.listen((final event) {
         dev.log(
           event.message,
           name: event.loggerName,

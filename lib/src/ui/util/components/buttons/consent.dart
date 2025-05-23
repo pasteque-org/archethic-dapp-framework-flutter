@@ -8,22 +8,22 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ConsentToCheck extends ConsumerWidget {
   const ConsentToCheck({
-    super.key,
     required this.consentChecked,
     required this.onToggleConsent,
     required this.uriTermsOfUse,
     required this.uriPrivacyPolicy,
+    super.key,
     this.textStyle,
   });
 
   final bool consentChecked;
-  final Function(bool? newValue) onToggleConsent;
+  final Function({required bool? newValue}) onToggleConsent;
   final String uriTermsOfUse;
   final String uriPrivacyPolicy;
   final TextStyle? textStyle;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     final defaultStyle = textStyle ?? Theme.of(context).textTheme.bodyMedium!;
     final linkStyle = defaultStyle.copyWith(
       decoration: TextDecoration.underline,
@@ -38,40 +38,54 @@ class ConsentToCheck extends ConsumerWidget {
                 style: defaultStyle,
                 children: [
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_to_check_part1,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_to_check_part1,
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_to_check_part2,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_to_check_part2,
                     style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        if (await canLaunchUrl(Uri.parse(uriTermsOfUse))) {
-                          await launchUrl(Uri.parse(uriTermsOfUse));
-                        }
-                      },
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () async {
+                            if (await canLaunchUrl(Uri.parse(uriTermsOfUse))) {
+                              await launchUrl(Uri.parse(uriTermsOfUse));
+                            }
+                          },
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_to_check_part3,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_to_check_part3,
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_to_check_part4,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_to_check_part4,
                     style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        if (await canLaunchUrl(Uri.parse(uriPrivacyPolicy))) {
-                          await launchUrl(Uri.parse(uriPrivacyPolicy));
-                        }
-                      },
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () async {
+                            if (await canLaunchUrl(
+                              Uri.parse(uriPrivacyPolicy),
+                            )) {
+                              await launchUrl(Uri.parse(uriPrivacyPolicy));
+                            }
+                          },
                   ),
                 ],
               ),
             ),
             value: consentChecked,
-            onChanged: onToggleConsent,
+            onChanged: (final newValue) {
+              onToggleConsent(newValue: newValue);
+            },
             controlAffinity: ListTileControlAffinity.leading,
           ),
         ),
@@ -82,10 +96,10 @@ class ConsentToCheck extends ConsumerWidget {
 
 class ConsentAlready extends ConsumerWidget {
   const ConsentAlready({
-    super.key,
     required this.consentDateTime,
     required this.uriTermsOfUse,
     required this.uriPrivacyPolicy,
+    super.key,
     this.textStyle,
   });
 
@@ -95,7 +109,7 @@ class ConsentAlready extends ConsumerWidget {
   final TextStyle? textStyle;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     final defaultStyle = textStyle ?? Theme.of(context).textTheme.bodyMedium!;
     final linkStyle = defaultStyle.copyWith(
       decoration: TextDecoration.underline,
@@ -120,38 +134,52 @@ class ConsentAlready extends ConsumerWidget {
                     ),
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_already_part1,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_already_part1,
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_already_part2,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_already_part2,
                     style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        if (await canLaunchUrl(Uri.parse(uriTermsOfUse))) {
-                          await launchUrl(Uri.parse(uriTermsOfUse));
-                        }
-                      },
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () async {
+                            if (await canLaunchUrl(Uri.parse(uriTermsOfUse))) {
+                              await launchUrl(Uri.parse(uriTermsOfUse));
+                            }
+                          },
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_already_part3,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_already_part3,
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_already_part4,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_already_part4,
                     style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        if (await canLaunchUrl(Uri.parse(uriPrivacyPolicy))) {
-                          await launchUrl(Uri.parse(uriPrivacyPolicy));
-                        }
-                      },
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () async {
+                            if (await canLaunchUrl(
+                              Uri.parse(uriPrivacyPolicy),
+                            )) {
+                              await launchUrl(Uri.parse(uriPrivacyPolicy));
+                            }
+                          },
                   ),
                   TextSpan(
-                    text: AppLocalizations.of(context)!
-                        .aedappfm_consent_already_part5,
+                    text:
+                        AppLocalizations.of(
+                          context,
+                        )!.aedappfm_consent_already_part5,
                   ),
                   TextSpan(
                     text: DateFormat.yMd(

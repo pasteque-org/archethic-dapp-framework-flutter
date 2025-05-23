@@ -9,7 +9,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'provider.g.dart';
 
 @riverpod
-OracleService oracleService(Ref ref) {
+OracleService oracleService(final Ref ref) {
   // We use always mainnet values
   return OracleService('https://mainnet.archethic.net');
 }
@@ -21,7 +21,7 @@ class _ArchethicOracleUCONotifier extends _$ArchethicOracleUCONotifier {
   static final _logger = Logger('ArchethicOracleUCONotifier');
 
   @override
-  Future<ArchethicOracleUCO> build() async {
+  Future<ArchethicOracleUCO> build() {
     _oracleService = ref.watch(oracleServiceProvider);
     ref.onDispose(stopSubscription);
 
@@ -29,7 +29,9 @@ class _ArchethicOracleUCONotifier extends _$ArchethicOracleUCONotifier {
   }
 
   Future<void> startSubscription() async {
-    if (archethicOracleSubscription != null) return;
+    if (archethicOracleSubscription != null) {
+      return;
+    }
 
     final oracleValue = await _subscribe();
 
@@ -48,21 +50,24 @@ class _ArchethicOracleUCONotifier extends _$ArchethicOracleUCONotifier {
 
     final oracleStream = await _oracleService.subscribe();
 
-    archethicOracleSubscription =
-        oracleStream.map((event) => event.toArchethic).listen((oracleEvent) {
-      _logger.info(
-        'Oracle: ${oracleEvent.timestamp}, eur: ${oracleEvent.eur}, usd: ${oracleEvent.usd}',
-      );
-      update((_) {
-        return oracleEvent;
-      });
-    });
+    archethicOracleSubscription = oracleStream
+        .map((final event) => event.toArchethic)
+        .listen((final oracleEvent) {
+          _logger.info(
+            'Oracle: ${oracleEvent.timestamp}, eur: ${oracleEvent.eur}, usd: ${oracleEvent.usd}',
+          );
+          update((_) {
+            return oracleEvent;
+          });
+        });
     return oracleUcoPrice.toArchethic;
   }
 
   Future<void> stopSubscription() async {
     _logger.info('Stop listening to Oracle');
-    if (archethicOracleSubscription == null) return;
+    if (archethicOracleSubscription == null) {
+      return;
+    }
     await archethicOracleSubscription?.cancel();
     archethicOracleSubscription = null;
   }

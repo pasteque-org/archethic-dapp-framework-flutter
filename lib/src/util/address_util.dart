@@ -1,5 +1,5 @@
 class AddressUtil {
-  static String reduceAddress(String input) {
+  static String reduceAddress(final String input) {
     if (input.length <= 14) {
       return input;
     }

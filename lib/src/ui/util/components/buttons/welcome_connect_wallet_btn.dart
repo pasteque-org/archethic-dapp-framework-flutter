@@ -3,14 +3,11 @@ import 'package:archethic_dapp_framework_flutter/src/ui/util/components/buttons/
 import 'package:flutter/material.dart';
 
 class WelcomeConnectWalletBtn extends StatelessWidget {
-  const WelcomeConnectWalletBtn({
-    required this.onPressed,
-    super.key,
-  });
+  const WelcomeConnectWalletBtn({required this.onPressed, super.key});
 
   final VoidCallback onPressed;
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return AppButton(
       labelBtn: AppLocalizations.of(context)!.aedappfm_connectionWalletConnect,
       onPressed: onPressed,

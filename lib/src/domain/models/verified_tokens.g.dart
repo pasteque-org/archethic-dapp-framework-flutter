@@ -6,14 +6,11 @@ part of 'verified_tokens.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VerifiedTokensImpl _$$VerifiedTokensImplFromJson(Map<String, dynamic> json) =>
-    _$VerifiedTokensImpl(
+_VerifiedTokens _$VerifiedTokensFromJson(Map<String, dynamic> json) =>
+    _VerifiedTokens(
       devnet:
           (json['devnet'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$VerifiedTokensImplToJson(
-        _$VerifiedTokensImpl instance) =>
-    <String, dynamic>{
-      'devnet': instance.devnet,
-    };
+Map<String, dynamic> _$VerifiedTokensToJson(_VerifiedTokens instance) =>
+    <String, dynamic>{'devnet': instance.devnet};

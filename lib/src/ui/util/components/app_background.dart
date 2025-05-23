@@ -15,7 +15,7 @@ class AppBackground extends StatelessWidget {
   final BoxFit boxFit;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Stack(
       children: [
         Container(color: AppThemeBase.backgroundColor),
@@ -26,9 +26,7 @@ class AppBackground extends StatelessWidget {
                 ArchethicThemeBase.purple500.withValues(alpha: 1),
                 BlendMode.modulate,
               ),
-              image: AssetImage(
-                backgroundImage,
-              ),
+              image: AssetImage(backgroundImage),
               fit: boxFit,
             ),
           ),

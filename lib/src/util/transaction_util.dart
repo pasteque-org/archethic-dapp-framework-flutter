@@ -1,3 +1,5 @@
+// ignore_for_file: require_trailing_commas
+
 import 'dart:async';
 import 'dart:developer' as dev;
 
@@ -10,9 +12,9 @@ import 'package:flutter/foundation.dart';
 
 mixin TransactionMixin {
   Future<double> calculateFees(
-    Transaction transaction,
-    ApiService apiService, {
-    double slippage = 1.01,
+    final Transaction transaction,
+    final ApiService apiService, {
+    final double slippage = 1.01,
   }) async {
     final transactionFee = await apiService.getTransactionFee(transaction);
     final fees = fromBigInt(transactionFee.fee) * slippage;
@@ -20,8 +22,8 @@ mixin TransactionMixin {
   }
 
   Future<void> sendTransactions(
-    List<Transaction> transactions,
-    ApiService apiService,
+    final List<Transaction> transactions,
+    final ApiService apiService,
   ) async {
     var errorDetail = '';
     for (final transaction in transactions) {
@@ -33,26 +35,28 @@ mixin TransactionMixin {
       try {
         final confirmation = await ArchethicTransactionSender(
           apiService: apiService,
-        ).send(
-          transaction: transaction,
-        );
-        if (confirmation == null) return;
+        ).send(transaction: transaction);
+        if (confirmation == null) {
+          return;
+        }
 
         if (kDebugMode) {
           sl.get<LogManager>().log(
-                'nbConfirmations: ${confirmation.nbConfirmations}, transactionAddress: ${confirmation.transactionAddress}, maxConfirmations: ${confirmation.maxConfirmations}',
-                level: LogLevel.debug,
-                name: 'TransactionDexMixin - sendTransactions',
-              );
+            'nbConfirmations: ${confirmation.nbConfirmations}, transactionAddress: ${confirmation.transactionAddress}, maxConfirmations: ${confirmation.maxConfirmations}',
+            level: LogLevel.debug,
+            name: 'TransactionDexMixin - sendTransactions',
+          );
         }
         next = true;
-      } catch (transactionError) {
+      } on Exception catch (transactionError) {
         errorDetail = transactionError.toString();
       }
 
-      while (next == false && errorDetail.isEmpty) {
+      while (!next && errorDetail.isEmpty) {
         await Future.delayed(const Duration(seconds: 1));
-        if (kDebugMode) dev.log('wait...');
+        if (kDebugMode) {
+          dev.log('wait...');
+        }
       }
     }
 
@@ -62,11 +66,11 @@ mixin TransactionMixin {
   }
 
   Future<List<Transaction>> signTx(
-    awc.ArchethicDAppClient dappClient,
-    String serviceName,
-    String pathSuffix,
-    List<Transaction> transactions, {
-    Map<String, dynamic>? description,
+    final awc.ArchethicDAppClient dappClient,
+    final String serviceName,
+    final String pathSuffix,
+    final List<Transaction> transactions, {
+    final Map<String, dynamic>? description,
   }) async {
     final newTransactions = <Transaction>[];
 
@@ -74,28 +78,27 @@ mixin TransactionMixin {
       serviceName: serviceName,
       pathSuffix: pathSuffix,
       description: description ?? {},
-      transactions: transactions
-          .map(
-            (Transaction x) => awc.SignTransactionRequestData(
-              data: x.data!,
-              type: x.type!,
-              version: x.version,
-            ),
-          )
-          .toList(),
+      transactions:
+          transactions
+              .map(
+                (final x) => awc.SignTransactionRequestData(
+                  data: x.data!,
+                  type: x.type!,
+                  version: x.version,
+                ),
+              )
+              .toList(),
     );
 
     final result = await dappClient.signTransactions(payload);
     result.when(
-      failure: (failure) {
+      failure: (final failure) {
         if (failure.code == 4001) {
           throw const Failure.userRejected();
         }
-        throw Failure.other(
-          cause: failure.message,
-        );
+        throw Failure.other(cause: failure.message);
       },
-      success: (result) {
+      success: (final result) {
         for (var i = 0; i < transactions.length; i++) {
           newTransactions.add(
             transactions[i]
@@ -113,10 +116,10 @@ mixin TransactionMixin {
   }
 
   Future<bool> waitForManualTxConfirmation(
-    String txChainAddress,
-    int targetIndex,
-    ApiService apiService, {
-    int nbTrials = 60,
+    final String txChainAddress,
+    final int targetIndex,
+    final ApiService apiService, {
+    final int nbTrials = 60,
   }) async {
     for (var i = 0; i < nbTrials; i++) {
       final txIndexMap = await apiService.getTransactionIndex([txChainAddress]);
@@ -132,7 +135,7 @@ mixin TransactionMixin {
   }
 
   Future<String> getCurrentAccount(
-    awc.ArchethicDAppClient dappClient,
+    final awc.ArchethicDAppClient dappClient,
   ) async {
     var accountName = '';
 
@@ -140,24 +143,24 @@ mixin TransactionMixin {
     try {
       final result = await dappClient.getCurrentAccount().valueOrThrow;
       accountName = result.shortName;
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       sl.get<LogManager>().log(
-            '$e',
-            stackTrace: stackTrace,
-            level: LogLevel.error,
-            name: 'TransactionDexMixin - getCurrentAccount',
-          );
+        '$e',
+        stackTrace: stackTrace,
+        level: LogLevel.error,
+        name: 'TransactionDexMixin - getCurrentAccount',
+      );
     }
 
     return accountName;
   }
 
   Future<void> refreshCurrentAccountInfoWallet(
-    awc.ArchethicDAppClient dappClient,
+    final awc.ArchethicDAppClient dappClient,
   ) async {
     try {
       await dappClient.refreshCurrentAccount();
-    } catch (e) {
+    } on Exception catch (_) {
       // No need to notify error
     }
 
@@ -165,9 +168,9 @@ mixin TransactionMixin {
   }
 
   Future<bool> isSCCallExecuted(
-    ApiService apiService,
-    String contractAddress,
-    String txAddress,
+    final ApiService apiService,
+    final String contractAddress,
+    final String txAddress,
   ) async {
     var executed = false;
 
@@ -184,9 +187,15 @@ mixin TransactionMixin {
         if (transaction.validationStamp != null &&
             transaction.validationStamp!.ledgerOperations != null &&
             transaction
-                .validationStamp!.ledgerOperations!.consumedInputs.isNotEmpty) {
-          for (final consumedInput in transaction
-              .validationStamp!.ledgerOperations!.consumedInputs) {
+                .validationStamp!
+                .ledgerOperations!
+                .consumedInputs
+                .isNotEmpty) {
+          for (final consumedInput
+              in transaction
+                  .validationStamp!
+                  .ledgerOperations!
+                  .consumedInputs) {
             if (consumedInput.type == 'call' &&
                 consumedInput.from != null &&
                 consumedInput.from!.toUpperCase() == txAddress.toUpperCase()) {
@@ -204,9 +213,9 @@ mixin TransactionMixin {
   }
 
   Future<double> getAmountFromTxInput(
-    String txAddress,
-    String? tokenAddress,
-    ApiService apiService,
+    final String txAddress,
+    final String? tokenAddress,
+    final ApiService apiService,
   ) async {
     final transactionMap = await apiService.getTransaction([txAddress]);
     if (transactionMap[txAddress] == null) {
@@ -219,7 +228,9 @@ mixin TransactionMixin {
     }
     // ignore: cascade_invocations
 
-    transactionInputs.sort((a, b) => b.timestamp!.compareTo(a.timestamp!));
+    transactionInputs.sort(
+      (final a, final b) => b.timestamp!.compareTo(a.timestamp!),
+    );
     var amount = 0;
     for (final txInput in transactionInputs) {
       if ((tokenAddress == null || tokenAddress == 'UCO') &&
@@ -245,11 +256,11 @@ mixin TransactionMixin {
   }
 
   Future<double> getAmountFromTx(
-    ApiService apiService,
-    String txAddress,
-    bool isUCO,
-    String to, {
-    bool withLastAddress = false,
+    final ApiService apiService,
+    final String txAddress,
+    final String to, {
+    required final bool isUCO,
+    final bool withLastAddress = false,
   }) async {
     final genesisTo = await apiService.getGenesisAddress(to);
 
@@ -257,15 +268,13 @@ mixin TransactionMixin {
     var amount = 0.0;
     if (isUCO) {
       if (withLastAddress) {
-        transactionMap = await apiService.getLastTransaction(
-          [txAddress],
-          request: ' data {ledger {uco { transfers { amount, to } } } }',
-        );
+        transactionMap = await apiService.getLastTransaction([
+          txAddress,
+        ], request: ' data {ledger {uco { transfers { amount, to } } } }');
       } else {
-        transactionMap = await apiService.getTransaction(
-          [txAddress],
-          request: ' data {ledger {uco { transfers { amount, to } } } }',
-        );
+        transactionMap = await apiService.getTransaction([
+          txAddress,
+        ], request: ' data {ledger {uco { transfers { amount, to } } } }');
       }
 
       final transfers = transactionMap[txAddress]?.data?.ledger?.uco?.transfers;
@@ -284,15 +293,13 @@ mixin TransactionMixin {
       return amount;
     } else {
       if (withLastAddress) {
-        transactionMap = await apiService.getLastTransaction(
-          [txAddress],
-          request: ' data {ledger {token { transfers { amount, to } } } }',
-        );
+        transactionMap = await apiService.getLastTransaction([
+          txAddress,
+        ], request: ' data {ledger {token { transfers { amount, to } } } }');
       } else {
-        transactionMap = await apiService.getTransaction(
-          [txAddress],
-          request: ' data {ledger {token { transfers { amount, to } } } }',
-        );
+        transactionMap = await apiService.getTransaction([
+          txAddress,
+        ], request: ' data {ledger {token { transfers { amount, to } } } }');
       }
 
       final transfers =

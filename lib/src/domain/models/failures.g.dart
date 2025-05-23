@@ -6,324 +6,210 @@ part of 'failures.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LoggedOutImpl _$$LoggedOutImplFromJson(Map<String, dynamic> json) =>
-    _$LoggedOutImpl(
-      $type: json['runtimeType'] as String?,
-    );
+LoggedOut _$LoggedOutFromJson(Map<String, dynamic> json) =>
+    LoggedOut($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$LoggedOutImplToJson(_$LoggedOutImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$LoggedOutToJson(LoggedOut instance) => <String, dynamic>{
+  'runtimeType': instance.$type,
+};
 
-_$NetworkFailureImpl _$$NetworkFailureImplFromJson(Map<String, dynamic> json) =>
-    _$NetworkFailureImpl(
-      $type: json['runtimeType'] as String?,
-    );
+NetworkFailure _$NetworkFailureFromJson(Map<String, dynamic> json) =>
+    NetworkFailure($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$NetworkFailureImplToJson(
-        _$NetworkFailureImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$NetworkFailureToJson(NetworkFailure instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$QuotaExceededFailureImpl _$$QuotaExceededFailureImplFromJson(
-        Map<String, dynamic> json) =>
-    _$QuotaExceededFailureImpl(
-      cooldownEndDate: json['cooldownEndDate'] == null
+QuotaExceededFailure _$QuotaExceededFailureFromJson(
+  Map<String, dynamic> json,
+) => QuotaExceededFailure(
+  cooldownEndDate:
+      json['cooldownEndDate'] == null
           ? null
           : DateTime.parse(json['cooldownEndDate'] as String),
-      $type: json['runtimeType'] as String?,
-    );
+  $type: json['runtimeType'] as String?,
+);
 
-Map<String, dynamic> _$$QuotaExceededFailureImplToJson(
-        _$QuotaExceededFailureImpl instance) =>
-    <String, dynamic>{
-      'cooldownEndDate': instance.cooldownEndDate?.toIso8601String(),
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$QuotaExceededFailureToJson(
+  QuotaExceededFailure instance,
+) => <String, dynamic>{
+  'cooldownEndDate': instance.cooldownEndDate?.toIso8601String(),
+  'runtimeType': instance.$type,
+};
 
-_$ServiceNotFoundImpl _$$ServiceNotFoundImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ServiceNotFoundImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ServiceNotFound _$ServiceNotFoundFromJson(Map<String, dynamic> json) =>
+    ServiceNotFound($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ServiceNotFoundImplToJson(
-        _$ServiceNotFoundImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ServiceNotFoundToJson(ServiceNotFound instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$ServiceAlreadyExistsImpl _$$ServiceAlreadyExistsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ServiceAlreadyExistsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ServiceAlreadyExists _$ServiceAlreadyExistsFromJson(
+  Map<String, dynamic> json,
+) => ServiceAlreadyExists($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ServiceAlreadyExistsImplToJson(
-        _$ServiceAlreadyExistsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ServiceAlreadyExistsToJson(
+  ServiceAlreadyExists instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$PoolAlreadyExistsImpl _$$PoolAlreadyExistsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PoolAlreadyExistsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+PoolAlreadyExists _$PoolAlreadyExistsFromJson(Map<String, dynamic> json) =>
+    PoolAlreadyExists($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$PoolAlreadyExistsImplToJson(
-        _$PoolAlreadyExistsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$PoolAlreadyExistsToJson(PoolAlreadyExists instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$LPTokenAmountExceedBalanceImpl _$$LPTokenAmountExceedBalanceImplFromJson(
-        Map<String, dynamic> json) =>
-    _$LPTokenAmountExceedBalanceImpl(
-      $type: json['runtimeType'] as String?,
-    );
+LPTokenAmountExceedBalance _$LPTokenAmountExceedBalanceFromJson(
+  Map<String, dynamic> json,
+) => LPTokenAmountExceedBalance($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$LPTokenAmountExceedBalanceImplToJson(
-        _$LPTokenAmountExceedBalanceImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$LPTokenAmountExceedBalanceToJson(
+  LPTokenAmountExceedBalance instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$PoolNotExistsImpl _$$PoolNotExistsImplFromJson(Map<String, dynamic> json) =>
-    _$PoolNotExistsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+PoolNotExists _$PoolNotExistsFromJson(Map<String, dynamic> json) =>
+    PoolNotExists($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$PoolNotExistsImplToJson(_$PoolNotExistsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$PoolNotExistsToJson(PoolNotExists instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$InsufficientFundsImpl _$$InsufficientFundsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InsufficientFundsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+InsufficientFunds _$InsufficientFundsFromJson(Map<String, dynamic> json) =>
+    InsufficientFunds($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$InsufficientFundsImplToJson(
-        _$InsufficientFundsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$InsufficientFundsToJson(InsufficientFunds instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$UnauthorizedImpl _$$UnauthorizedImplFromJson(Map<String, dynamic> json) =>
-    _$UnauthorizedImpl(
-      $type: json['runtimeType'] as String?,
-    );
+Unauthorized _$UnauthorizedFromJson(Map<String, dynamic> json) =>
+    Unauthorized($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$UnauthorizedImplToJson(_$UnauthorizedImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$UnauthorizedToJson(Unauthorized instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$InvalidValueImpl _$$InvalidValueImplFromJson(Map<String, dynamic> json) =>
-    _$InvalidValueImpl(
-      $type: json['runtimeType'] as String?,
-    );
+InvalidValue _$InvalidValueFromJson(Map<String, dynamic> json) =>
+    InvalidValue($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$InvalidValueImplToJson(_$InvalidValueImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$InvalidValueToJson(InvalidValue instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$HTLCWithoutFundsImpl _$$HTLCWithoutFundsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$HTLCWithoutFundsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+HTLCWithoutFunds _$HTLCWithoutFundsFromJson(Map<String, dynamic> json) =>
+    HTLCWithoutFunds($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$HTLCWithoutFundsImplToJson(
-        _$HTLCWithoutFundsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$HTLCWithoutFundsToJson(HTLCWithoutFunds instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$NotHTLCImpl _$$NotHTLCImplFromJson(Map<String, dynamic> json) =>
-    _$NotHTLCImpl(
-      $type: json['runtimeType'] as String?,
-    );
+NotHTLC _$NotHTLCFromJson(Map<String, dynamic> json) =>
+    NotHTLC($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$NotHTLCImplToJson(_$NotHTLCImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$NotHTLCToJson(NotHTLC instance) => <String, dynamic>{
+  'runtimeType': instance.$type,
+};
 
-_$FaucetUCOErrorImpl _$$FaucetUCOErrorImplFromJson(Map<String, dynamic> json) =>
-    _$FaucetUCOErrorImpl(
-      $type: json['runtimeType'] as String?,
-    );
+FaucetUCOError _$FaucetUCOErrorFromJson(Map<String, dynamic> json) =>
+    FaucetUCOError($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$FaucetUCOErrorImplToJson(
-        _$FaucetUCOErrorImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$FaucetUCOErrorToJson(FaucetUCOError instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$FaucetUCUserRejectedImpl _$$FaucetUCUserRejectedImplFromJson(
-        Map<String, dynamic> json) =>
-    _$FaucetUCUserRejectedImpl(
-      $type: json['runtimeType'] as String?,
-    );
+FaucetUCUserRejected _$FaucetUCUserRejectedFromJson(
+  Map<String, dynamic> json,
+) => FaucetUCUserRejected($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$FaucetUCUserRejectedImplToJson(
-        _$FaucetUCUserRejectedImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$FaucetUCUserRejectedToJson(
+  FaucetUCUserRejected instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$WrongNetworkImpl _$$WrongNetworkImplFromJson(Map<String, dynamic> json) =>
-    _$WrongNetworkImpl(
-      json['cause'] as String,
-      $type: json['runtimeType'] as String?,
-    );
+WrongNetwork _$WrongNetworkFromJson(Map<String, dynamic> json) => WrongNetwork(
+  json['cause'] as String,
+  $type: json['runtimeType'] as String?,
+);
 
-Map<String, dynamic> _$$WrongNetworkImplToJson(_$WrongNetworkImpl instance) =>
-    <String, dynamic>{
-      'cause': instance.cause,
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$WrongNetworkToJson(WrongNetwork instance) =>
+    <String, dynamic>{'cause': instance.cause, 'runtimeType': instance.$type};
 
-_$InsufficientPoolFundsImpl _$$InsufficientPoolFundsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InsufficientPoolFundsImpl(
-      $type: json['runtimeType'] as String?,
-    );
+InsufficientPoolFunds _$InsufficientPoolFundsFromJson(
+  Map<String, dynamic> json,
+) => InsufficientPoolFunds($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$InsufficientPoolFundsImplToJson(
-        _$InsufficientPoolFundsImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$InsufficientPoolFundsToJson(
+  InsufficientPoolFunds instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$IncompatibleBrowserImpl _$$IncompatibleBrowserImplFromJson(
-        Map<String, dynamic> json) =>
-    _$IncompatibleBrowserImpl(
-      $type: json['runtimeType'] as String?,
-    );
+IncompatibleBrowser _$IncompatibleBrowserFromJson(Map<String, dynamic> json) =>
+    IncompatibleBrowser($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$IncompatibleBrowserImplToJson(
-        _$IncompatibleBrowserImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$IncompatibleBrowserToJson(
+  IncompatibleBrowser instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$ChainSwitchNotSupportedImpl _$$ChainSwitchNotSupportedImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ChainSwitchNotSupportedImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ChainSwitchNotSupported _$ChainSwitchNotSupportedFromJson(
+  Map<String, dynamic> json,
+) => ChainSwitchNotSupported($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ChainSwitchNotSupportedImplToJson(
-        _$ChainSwitchNotSupportedImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ChainSwitchNotSupportedToJson(
+  ChainSwitchNotSupported instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$ConnectivityEVMImpl _$$ConnectivityEVMImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ConnectivityEVMImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ConnectivityEVM _$ConnectivityEVMFromJson(Map<String, dynamic> json) =>
+    ConnectivityEVM($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ConnectivityEVMImplToJson(
-        _$ConnectivityEVMImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ConnectivityEVMToJson(ConnectivityEVM instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$WalletNotSupportedEVMImpl _$$WalletNotSupportedEVMImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WalletNotSupportedEVMImpl(
-      $type: json['runtimeType'] as String?,
-    );
+WalletNotSupportedEVM _$WalletNotSupportedEVMFromJson(
+  Map<String, dynamic> json,
+) => WalletNotSupportedEVM($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$WalletNotSupportedEVMImplToJson(
-        _$WalletNotSupportedEVMImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$WalletNotSupportedEVMToJson(
+  WalletNotSupportedEVM instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$NoWalletSupportedEVMImpl _$$NoWalletSupportedEVMImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NoWalletSupportedEVMImpl(
-      $type: json['runtimeType'] as String?,
-    );
+NoWalletSupportedEVM _$NoWalletSupportedEVMFromJson(
+  Map<String, dynamic> json,
+) => NoWalletSupportedEVM($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$NoWalletSupportedEVMImplToJson(
-        _$NoWalletSupportedEVMImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$NoWalletSupportedEVMToJson(
+  NoWalletSupportedEVM instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$ParamEVMChainImpl _$$ParamEVMChainImplFromJson(Map<String, dynamic> json) =>
-    _$ParamEVMChainImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ParamEVMChain _$ParamEVMChainFromJson(Map<String, dynamic> json) =>
+    ParamEVMChain($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ParamEVMChainImplToJson(_$ParamEVMChainImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ParamEVMChainToJson(ParamEVMChain instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$UserRejectedImpl _$$UserRejectedImplFromJson(Map<String, dynamic> json) =>
-    _$UserRejectedImpl(
-      $type: json['runtimeType'] as String?,
-    );
+UserRejected _$UserRejectedFromJson(Map<String, dynamic> json) =>
+    UserRejected($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$UserRejectedImplToJson(_$UserRejectedImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$UserRejectedToJson(UserRejected instance) =>
+    <String, dynamic>{'runtimeType': instance.$type};
 
-_$ConnectivityArchethicImpl _$$ConnectivityArchethicImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ConnectivityArchethicImpl(
-      $type: json['runtimeType'] as String?,
-    );
+ConnectivityArchethic _$ConnectivityArchethicFromJson(
+  Map<String, dynamic> json,
+) => ConnectivityArchethic($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$ConnectivityArchethicImplToJson(
-        _$ConnectivityArchethicImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$ConnectivityArchethicToJson(
+  ConnectivityArchethic instance,
+) => <String, dynamic>{'runtimeType': instance.$type};
 
-_$TimeoutImpl _$$TimeoutImplFromJson(Map<String, dynamic> json) =>
-    _$TimeoutImpl(
-      $type: json['runtimeType'] as String?,
-    );
+Timeout _$TimeoutFromJson(Map<String, dynamic> json) =>
+    Timeout($type: json['runtimeType'] as String?);
 
-Map<String, dynamic> _$$TimeoutImplToJson(_$TimeoutImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$TimeoutToJson(Timeout instance) => <String, dynamic>{
+  'runtimeType': instance.$type,
+};
 
-_$RPCErrorEVMImpl _$$RPCErrorEVMImplFromJson(Map<String, dynamic> json) =>
-    _$RPCErrorEVMImpl(
-      json['cause'] as String?,
-      $type: json['runtimeType'] as String?,
-    );
+RPCErrorEVM _$RPCErrorEVMFromJson(Map<String, dynamic> json) => RPCErrorEVM(
+  json['cause'] as String?,
+  $type: json['runtimeType'] as String?,
+);
 
-Map<String, dynamic> _$$RPCErrorEVMImplToJson(_$RPCErrorEVMImpl instance) =>
-    <String, dynamic>{
-      'cause': instance.cause,
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$RPCErrorEVMToJson(RPCErrorEVM instance) =>
+    <String, dynamic>{'cause': instance.cause, 'runtimeType': instance.$type};
 
-_$OtherFailureImpl _$$OtherFailureImplFromJson(Map<String, dynamic> json) =>
-    _$OtherFailureImpl(
-      cause: json['cause'] as String?,
-      stack: json['stack'] as String?,
-      $type: json['runtimeType'] as String?,
-    );
+OtherFailure _$OtherFailureFromJson(Map<String, dynamic> json) => OtherFailure(
+  cause: json['cause'] as String?,
+  stack: json['stack'] as String?,
+  $type: json['runtimeType'] as String?,
+);
 
-Map<String, dynamic> _$$OtherFailureImplToJson(_$OtherFailureImpl instance) =>
+Map<String, dynamic> _$OtherFailureToJson(OtherFailure instance) =>
     <String, dynamic>{
       'cause': instance.cause,
       'stack': instance.stack,

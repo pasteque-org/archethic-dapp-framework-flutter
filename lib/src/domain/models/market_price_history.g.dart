@@ -6,15 +6,13 @@ part of 'market_price_history.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PriceHistoryValueImpl _$$PriceHistoryValueImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PriceHistoryValueImpl(
+_PriceHistoryValue _$PriceHistoryValueFromJson(Map<String, dynamic> json) =>
+    _PriceHistoryValue(
       price: json['price'] as num,
       time: DateTime.parse(json['time'] as String),
     );
 
-Map<String, dynamic> _$$PriceHistoryValueImplToJson(
-        _$PriceHistoryValueImpl instance) =>
+Map<String, dynamic> _$PriceHistoryValueToJson(_PriceHistoryValue instance) =>
     <String, dynamic>{
       'price': instance.price,
       'time': instance.time.toIso8601String(),

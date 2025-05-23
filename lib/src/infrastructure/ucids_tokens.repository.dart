@@ -19,7 +19,7 @@ class UcidsTokensRepositoryImpl implements UcidsTokensRepositoryInterface {
 
   @override
   Future<Map<String, int>> getUcidsTokensFromNetwork(
-    Environment environment,
+    final Environment environment,
   ) async {
     final ucidsTokens = await getUcidsTokens();
 

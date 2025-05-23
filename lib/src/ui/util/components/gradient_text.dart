@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class GradientText extends StatelessWidget {
   const GradientText(
     this.text, {
-    super.key,
     required this.gradient,
+    super.key,
     this.style,
     this.selectable = true,
   });
@@ -16,27 +16,29 @@ class GradientText extends StatelessWidget {
   final bool selectable;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return ShaderMask(
       blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: selectable
-          ? SelectableText(
-              text,
-              style: style,
-              textScaler: TextScaler.linear(
-                ScaleSize.textScaleFactor(context),
+      shaderCallback:
+          (final bounds) => gradient.createShader(
+            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+          ),
+      child:
+          selectable
+              ? SelectableText(
+                text,
+                style: style,
+                textScaler: TextScaler.linear(
+                  ScaleSize.textScaleFactor(context),
+                ),
+              )
+              : Text(
+                text,
+                style: style,
+                textScaler: TextScaler.linear(
+                  ScaleSize.textScaleFactor(context),
+                ),
               ),
-            )
-          : Text(
-              text,
-              style: style,
-              textScaler: TextScaler.linear(
-                ScaleSize.textScaleFactor(context),
-              ),
-            ),
     );
   }
 }

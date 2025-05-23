@@ -85,27 +85,31 @@ class ProvidersTracker extends ProviderObserver {
   final ValueNotifier<Set<ProviderBase<Object?>>> _aliveProviders =
       ValueNotifier({});
 
-  void _addAliveProvider(ProviderBase<Object?> provider) {
+  void _addAliveProvider(final ProviderBase<Object?> provider) {
     _aliveProviders.value = {..._aliveProviders.value, provider};
   }
 
-  void _removeAliveProvider(ProviderBase<Object?> provider) {
-    _aliveProviders.value = _aliveProviders.value
-        .where((aliveProvider) => aliveProvider != provider)
-        .toSet();
+  void _removeAliveProvider(final ProviderBase<Object?> provider) {
+    _aliveProviders.value =
+        _aliveProviders.value
+            .where((final aliveProvider) => aliveProvider != provider)
+            .toSet();
   }
 
   @override
   void didAddProvider(
-    ProviderBase<Object?> provider,
-    Object? value,
-    ProviderContainer container,
+    final ProviderBase<Object?> provider,
+    final Object? value,
+    final ProviderContainer container,
   ) {
     _addAliveProvider(provider);
   }
 
   @override
-  void didDisposeProvider(ProviderBase provider, ProviderContainer container) {
+  void didDisposeProvider(
+    final ProviderBase provider,
+    final ProviderContainer container,
+  ) {
     _removeAliveProvider(provider);
   }
 
@@ -113,31 +117,27 @@ class ProvidersTracker extends ProviderObserver {
   Set<ProviderBase<Object?>> get aliveProviders => _aliveProviders.value;
 
   /// Shows the provider with matching [hashCode]
-  ProviderBase<Object?>? provider(int hashCode) => _aliveProviders.value
-      .where(
-        (element) => element.hashCode == hashCode,
-      )
-      .firstOrNull;
+  ProviderBase<Object?>? provider(final int hashCode) =>
+      _aliveProviders.value
+          .where((final element) => element.hashCode == hashCode)
+          .firstOrNull;
 
   /// Creates a [ProvidersTrackerMatcher].
-  ProvidersTrackerMatcher match(ProviderMatcher matcher) =>
+  ProvidersTrackerMatcher match(final ProviderMatcher matcher) =>
       ProvidersTrackerMatcher(tracker: this, matcher: matcher);
 
   /// Creates a [ProvidersTrackerMatcher] which
   /// filters providers by name/classname.
   ///
   /// For more details about the matchin rules, check [NameProviderMatcher].
-  ProvidersTrackerMatcher byName(String name) =>
+  ProvidersTrackerMatcher byName(final String name) =>
       match(ProviderMatcher.name(name));
 }
 
 /// Provides [read] and [watch] methods to monitor
 /// currently alive providers filtered with [matcher].
 class ProvidersTrackerMatcher {
-  ProvidersTrackerMatcher({
-    required this.tracker,
-    required this.matcher,
-  });
+  ProvidersTrackerMatcher({required this.tracker, required this.matcher});
 
   final ProviderMatcher matcher;
   final ProvidersTracker tracker;
@@ -153,7 +153,9 @@ class ProvidersTrackerMatcher {
 
     void processChange() {
       final newValue = tracker._aliveProviders.value.match(matcher);
-      if (newValue == previousValue) return;
+      if (newValue == previousValue) {
+        return;
+      }
 
       previousValue = newValue;
       controller.add(newValue);
@@ -166,6 +168,7 @@ class ProvidersTrackerMatcher {
 
     void close() {
       tracker._aliveProviders.removeListener(processChange);
+      unawaited(controller.close());
     }
 
     controller = StreamController<Set<ProviderBase<Object?>>>(
@@ -186,9 +189,10 @@ abstract class ProviderMatcher {
   ///
   ///  - AutoDisposeProvider [(oracleServiceProvider:AutoDisposeProvider<OracleService>#2d1c8)]
   ///  - AutoDisposeAsyncNotifierProviderImpl (_archethicOracleUCONotifierProvider:AutoDisposeAsyncNotifierProviderImpl<_ArchethicOracleUCONotifier, ArchethicOracleUCO>#4aa30)
-  factory ProviderMatcher.name(String name) => NameProviderMatcher(name);
+  factory ProviderMatcher.name(final String name) => NameProviderMatcher(name);
 
-  bool matches(ProviderBase<Object?> provider) => throw UnimplementedError();
+  bool matches(final ProviderBase<Object?> provider) =>
+      throw UnimplementedError();
 }
 
 class NameProviderMatcher implements ProviderMatcher {
@@ -197,16 +201,14 @@ class NameProviderMatcher implements ProviderMatcher {
   final String name;
 
   @override
-  bool matches(ProviderBase<Object?> provider) =>
+  bool matches(final ProviderBase<Object?> provider) =>
       (provider.name ?? '').toLowerCase().contains(name.toLowerCase()) ||
-      provider.runtimeType
-          .toString()
-          .toLowerCase()
-          .contains(name.toLowerCase());
+      provider.runtimeType.toString().toLowerCase().contains(
+        name.toLowerCase(),
+      );
 }
 
 extension SetProviderMatchExt on Set<ProviderBase<Object?>> {
-  Set<ProviderBase<Object?>> match(ProviderMatcher matcher) => where(
-        (element) => matcher.matches(element),
-      ).toSet();
+  Set<ProviderBase<Object?>> match(final ProviderMatcher matcher) =>
+      where(matcher.matches).toSet();
 }

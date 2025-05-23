@@ -3,15 +3,16 @@ import 'dart:typed_data';
 import 'package:archethic_dapp_framework_flutter/src/util/file_util.dart';
 
 mixin RouterMixin {
-  String encodeQueryParameter(Object parameter) {
+  String encodeQueryParameter(final Object parameter) {
     final helper = ZipAndEncodeHelper();
     final parameterJson = jsonEncode(parameter);
     final parameterEncoded = Uri.encodeComponent(parameterJson);
-    return helper
-        .zipAndEncodeContent(Uint8List.fromList(utf8.encode(parameterEncoded)));
+    return helper.zipAndEncodeContent(
+      Uint8List.fromList(utf8.encode(parameterEncoded)),
+    );
   }
 
-  dynamic decodeQueryParameter(String encodedParameter) {
+  dynamic decodeQueryParameter(final String encodedParameter) {
     final helper = ZipAndEncodeHelper();
     final parameterEncoded = helper.dezipAndDecodeContent(encodedParameter);
     final parameteDecoded = utf8.decode(parameterEncoded);

@@ -17,7 +17,7 @@ class ArchethicOracleUco extends ConsumerWidget {
   final int precision;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     final archethicOracleUCO =
         ref.watch(ArchethicOracleUCOProviders.archethicOracleUCO).valueOrNull;
     if (archethicOracleUCO == null) {
@@ -26,20 +26,17 @@ class ArchethicOracleUco extends ConsumerWidget {
     final timestamp = DateFormat.yMd(
       Localizations.localeOf(context).languageCode,
     ).add_Hm().format(
-          DateTime.fromMillisecondsSinceEpoch(
-            archethicOracleUCO.timestamp * 1000,
-          ).toLocal(),
-        );
+      DateTime.fromMillisecondsSinceEpoch(
+        archethicOracleUCO.timestamp * 1000,
+      ).toLocal(),
+    );
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         IconButtonAnimated(
-          icon: const Icon(
-            Icons.help,
-            size: 16,
-          ),
-          onPressed: () {
-            launchUrl(Uri.parse(faqLink));
+          icon: const Icon(Icons.help, size: 16),
+          onPressed: () async {
+            await launchUrl(Uri.parse(faqLink));
           },
           color: Colors.white,
         ),

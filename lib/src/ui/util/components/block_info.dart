@@ -35,7 +35,7 @@ class BlockInfo extends ConsumerWidget {
   final double borderWidth;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     return Column(
       children: [
         Padding(
@@ -50,57 +50,59 @@ class BlockInfo extends ConsumerWidget {
                     width: width,
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
-                      color: blockInfoColor == BlockInfoColor.grey
-                          ? ArchethicThemeBase.neutral850
-                          : null,
-                      gradient: blockInfoColor == BlockInfoColor.grey
-                          ? null
-                          : blockInfoColor == BlockInfoColor.blue
+                      color:
+                          blockInfoColor == BlockInfoColor.grey
+                              ? ArchethicThemeBase.neutral850
+                              : null,
+                      gradient:
+                          blockInfoColor == BlockInfoColor.grey
+                              ? null
+                              : blockInfoColor == BlockInfoColor.blue
                               ? LinearGradient(
-                                  colors: [
-                                    AppThemeBase.sheetBackgroundTertiary
-                                        .withValues(alpha: 0.3),
-                                    AppThemeBase.sheetBackgroundTertiary
-                                        .withValues(alpha: 0.3),
-                                  ],
-                                  stops: const [0, 1],
-                                )
+                                colors: [
+                                  AppThemeBase.sheetBackgroundTertiary
+                                      .withValues(alpha: 0.3),
+                                  AppThemeBase.sheetBackgroundTertiary
+                                      .withValues(alpha: 0.3),
+                                ],
+                                stops: const [0, 1],
+                              )
                               : blockInfoColor == BlockInfoColor.purple
-                                  ? ArchethicThemeBase.linearPurple
-                                  : blockInfoColor == BlockInfoColor.green
-                                      ? LinearGradient(
+                              ? ArchethicThemeBase.linearPurple
+                              : blockInfoColor == BlockInfoColor.green
+                              ? LinearGradient(
+                                colors: [
+                                  ArchethicThemeBase.systemPositive300
+                                      .withValues(alpha: 0.3),
+                                  ArchethicThemeBase.systemPositive600
+                                      .withValues(alpha: 0.3),
+                                ],
+                                stops: const [0, 1],
+                              )
+                              : LinearGradient(
+                                colors: [
+                                  ArchethicThemeBase.paleTransparentBackground
+                                      .withValues(alpha: 0.3),
+                                  ArchethicThemeBase.paleTransparentBackground
+                                      .withValues(alpha: 0.3),
+                                ],
+                                stops: const [0, 1],
+                              ),
+                      border:
+                          borderWidth == 0
+                              ? null
+                              : GradientBoxBorder(
+                                gradient:
+                                    blockInfoColor == BlockInfoColor.grey
+                                        ? LinearGradient(
                                           colors: [
-                                            ArchethicThemeBase.systemPositive300
-                                                .withValues(alpha: 0.3),
-                                            ArchethicThemeBase.systemPositive600
-                                                .withValues(alpha: 0.3),
+                                            ArchethicThemeBase.neutral800,
+                                            ArchethicThemeBase.neutral800,
                                           ],
                                           stops: const [0, 1],
                                         )
-                                      : LinearGradient(
-                                          colors: [
-                                            ArchethicThemeBase
-                                                .paleTransparentBackground
-                                                .withValues(alpha: 0.3),
-                                            ArchethicThemeBase
-                                                .paleTransparentBackground
-                                                .withValues(alpha: 0.3),
-                                          ],
-                                          stops: const [0, 1],
-                                        ),
-                      border: borderWidth == 0
-                          ? null
-                          : GradientBoxBorder(
-                              gradient: blockInfoColor == BlockInfoColor.grey
-                                  ? LinearGradient(
-                                      colors: [
-                                        ArchethicThemeBase.neutral800,
-                                        ArchethicThemeBase.neutral800,
-                                      ],
-                                      stops: const [0, 1],
-                                    )
-                                  : blockInfoColor == BlockInfoColor.blue
-                                      ? LinearGradient(
+                                        : blockInfoColor == BlockInfoColor.blue
+                                        ? LinearGradient(
                                           colors: [
                                             AppThemeBase.sheetBorderTertiary
                                                 .withValues(alpha: 0.4),
@@ -109,61 +111,50 @@ class BlockInfo extends ConsumerWidget {
                                           ],
                                           stops: const [0, 1],
                                         )
-                                      : blockInfoColor == BlockInfoColor.purple
-                                          ? LinearGradient(
-                                              colors: [
-                                                AppThemeBase
-                                                    .sheetBorderSecondary
-                                                    .withValues(alpha: 0.1),
-                                                AppThemeBase
-                                                    .sheetBorderSecondary
-                                                    .withValues(alpha: 0.4),
-                                              ],
-                                              stops: const [0, 1],
-                                            )
-                                          : blockInfoColor ==
-                                                  BlockInfoColor.green
-                                              ? LinearGradient(
-                                                  colors: [
-                                                    ArchethicThemeBase
-                                                        .systemPositive100
-                                                        .withValues(alpha: 0.2),
-                                                    ArchethicThemeBase
-                                                        .systemPositive300
-                                                        .withValues(alpha: 0.2),
-                                                  ],
-                                                  stops: const [0, 1],
-                                                )
-                                              : LinearGradient(
-                                                  colors: [
-                                                    ArchethicThemeBase
-                                                        .paleTransparentBorder
-                                                        .withValues(alpha: 0.2),
-                                                    ArchethicThemeBase
-                                                        .paleTransparentBorder
-                                                        .withValues(alpha: 0.2),
-                                                  ],
-                                                  stops: const [0, 1],
-                                                ),
-                              width: borderWidth,
-                            ),
+                                        : blockInfoColor ==
+                                            BlockInfoColor.purple
+                                        ? LinearGradient(
+                                          colors: [
+                                            AppThemeBase.sheetBorderSecondary
+                                                .withValues(alpha: 0.1),
+                                            AppThemeBase.sheetBorderSecondary
+                                                .withValues(alpha: 0.4),
+                                          ],
+                                          stops: const [0, 1],
+                                        )
+                                        : blockInfoColor == BlockInfoColor.green
+                                        ? LinearGradient(
+                                          colors: [
+                                            ArchethicThemeBase.systemPositive100
+                                                .withValues(alpha: 0.2),
+                                            ArchethicThemeBase.systemPositive300
+                                                .withValues(alpha: 0.2),
+                                          ],
+                                          stops: const [0, 1],
+                                        )
+                                        : LinearGradient(
+                                          colors: [
+                                            ArchethicThemeBase
+                                                .paleTransparentBorder
+                                                .withValues(alpha: 0.2),
+                                            ArchethicThemeBase
+                                                .paleTransparentBorder
+                                                .withValues(alpha: 0.2),
+                                          ],
+                                          stops: const [0, 1],
+                                        ),
+                                width: borderWidth,
+                              ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Padding(
-                      padding: paddingEdgeInsetsInfo,
-                      child: info,
-                    ),
+                    child: Padding(padding: paddingEdgeInsetsInfo, child: info),
                   ),
                 ],
               ),
             ),
           ),
         ),
-        if (bottomWidget != null)
-          SizedBox(
-            width: width,
-            child: bottomWidget,
-          ),
+        if (bottomWidget != null) SizedBox(width: width, child: bottomWidget),
       ],
     );
   }

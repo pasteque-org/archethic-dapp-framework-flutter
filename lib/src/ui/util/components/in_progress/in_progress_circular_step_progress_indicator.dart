@@ -21,7 +21,7 @@ class InProgressCircularStepProgressIndicator extends StatelessWidget {
   final IconData icon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: Align(
@@ -34,13 +34,15 @@ class InProgressCircularStepProgressIndicator extends StatelessWidget {
               width: 35,
               height: 35,
               stepSize: 2,
-              roundedCap: (_, isSelected) => isSelected,
-              gradientColor: isProcessInProgress == false
-                  ? failure == null
-                      ? AppThemeBase
-                          .gradientCircularStepProgressIndicatorFinished
-                      : AppThemeBase.gradientCircularStepProgressIndicatorError
-                  : failure == null
+              roundedCap: (_, final isSelected) => isSelected,
+              gradientColor:
+                  !isProcessInProgress
+                      ? failure == null
+                          ? AppThemeBase
+                              .gradientCircularStepProgressIndicatorFinished
+                          : AppThemeBase
+                              .gradientCircularStepProgressIndicatorError
+                      : failure == null
                       ? AppThemeBase.gradientCircularStepProgressIndicator
                       : AppThemeBase.gradientCircularStepProgressIndicatorError,
               selectedColor: Colors.white,
@@ -59,10 +61,7 @@ class InProgressCircularStepProgressIndicator extends StatelessWidget {
                       strokeWidth: 1,
                     ),
                   ),
-                Icon(
-                  icon,
-                  size: 16,
-                ),
+                Icon(icon, size: 16),
               ],
             ),
           ],

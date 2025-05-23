@@ -10,31 +10,28 @@ class CoinPriceHistoryRepository
     implements CoinPriceHistoryRepositoryInterface {
   @override
   Future<Result<List<PriceHistoryValue>, Failure>> getWithInterval({
-    required MarketPriceHistoryInterval interval,
-    required int ucid,
-  }) =>
-      Result.guard(
-        () async {
-          final url =
-              'https://fas.archethic.net/api/v1/quotes/history?ucid=$ucid&interval=${_marketPriceHistoryIntervalToString(interval)}';
-          final headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-          };
+    required final MarketPriceHistoryInterval interval,
+    required final int ucid,
+  }) => Result.guard(() async {
+    final url =
+        'https://fas.archethic.net/api/v1/quotes/history?ucid=$ucid&interval=${_marketPriceHistoryIntervalToString(interval)}';
+    final headers = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
 
-          try {
-            final response = await http.get(Uri.parse(url), headers: headers);
-            if (response.statusCode == 200) {
-              return _parsePriceHistoryValues(response.body);
-            }
-            // ignore: unused_catch_stack, empty_catches
-          } catch (e, stacktrace) {}
+    try {
+      final response = await http.get(Uri.parse(url), headers: headers);
+      if (response.statusCode == 200) {
+        return _parsePriceHistoryValues(response.body);
+      }
+      // ignore: unused_catch_stack, empty_catches
+    } on Exception catch (e, stacktrace) {}
 
-          return [];
-        },
-      );
+    return [];
+  });
 
-  List<PriceHistoryValue> _parsePriceHistoryValues(String responseBody) {
+  List<PriceHistoryValue> _parsePriceHistoryValues(final String responseBody) {
     final responseJson = jsonDecode(responseBody);
     final priceHistory = <PriceHistoryValue>[];
 
@@ -50,7 +47,7 @@ class CoinPriceHistoryRepository
   }
 
   String _marketPriceHistoryIntervalToString(
-    MarketPriceHistoryInterval interval,
+    final MarketPriceHistoryInterval interval,
   ) {
     switch (interval) {
       case MarketPriceHistoryInterval.hour:

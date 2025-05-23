@@ -54,11 +54,12 @@ enum Environment {
   /// Retrieves the [Environment] corresponding to the given [endpoint].
   ///
   /// Throws a [StateError] if no environment matches the provided endpoint.
-  static Environment byEndpoint(String endpoint) =>
+  static Environment byEndpoint(final String endpoint) =>
       Environment.values.firstWhere(
-        (environment) => environment.endpoint == endpoint,
-        orElse: () =>
-            throw StateError('No environment found for endpoint $endpoint'),
+        (final environment) => environment.endpoint == endpoint,
+        orElse:
+            () =>
+                throw StateError('No environment found for endpoint $endpoint'),
       );
 
   String get notificationBackendUrl {

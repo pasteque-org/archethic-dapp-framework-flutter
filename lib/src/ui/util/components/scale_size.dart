@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class ScaleSize {
   static double textScaleFactor(
-    BuildContext context, {
-    double maxTextScaleFactor = 2,
+    final BuildContext context, {
+    final double maxTextScaleFactor = 2,
   }) {
     final width = MediaQuery.sizeOf(context).width - 40;
     final val = (width / 1400) * maxTextScaleFactor;

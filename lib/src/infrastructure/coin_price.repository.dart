@@ -30,14 +30,14 @@ class CoinPriceRepositoryImpl implements CoinPriceRepositoryInterface {
         );
       }
       // ignore: unused_catch_stack, empty_catches
-    } catch (e, stacktrace) {}
+    } on Exception catch (e, stacktrace) {}
 
     return CryptoPrice();
   }
 
   // TODO(reddwarf03): Externalise this...
   @override
-  double getPriceFromUcid(int ucid, CryptoPrice coinPrice) {
+  double getPriceFromUcid(final int ucid, final CryptoPrice coinPrice) {
     if (ucid != 0) {
       switch (ucid) {
         case UCID.bitcoin:
@@ -59,7 +59,7 @@ class CoinPriceRepositoryImpl implements CoinPriceRepositoryInterface {
     return 0;
   }
 
-  Map<String, double> _extractPriceMethods(String responseBody) {
+  Map<String, double> _extractPriceMethods(final String responseBody) {
     final jsonData = json.decode(responseBody) as Map<String, dynamic>;
     return {
       'bitcoin': jsonData[UCID.bitcoin.toString()],

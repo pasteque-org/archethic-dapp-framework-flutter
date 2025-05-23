@@ -31,8 +31,8 @@ class ButtonValidate extends ConsumerWidget {
   final List<double> dimens;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (isConnected == false) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
+    if (!isConnected) {
       if (displayWalletConnect) {
         return WelcomeConnectWalletBtn(
           onPressed: displayWalletConnectOnPressed,
@@ -41,7 +41,7 @@ class ButtonValidate extends ConsumerWidget {
       return SizedBox(width: 10, height: height);
     }
 
-    if (controlOk == false) {
+    if (!controlOk) {
       return AppButton(
         backgroundGradient: backgroundGradient,
         labelBtn: labelBtn,

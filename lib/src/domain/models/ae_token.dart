@@ -10,57 +10,57 @@ class AETokenJsonConverter
   const AETokenJsonConverter();
 
   @override
-  AEToken fromJson(Map<String, dynamic> json) {
+  AEToken fromJson(final Map<String, dynamic> json) {
     return AEToken.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(AEToken object) => object.toJson();
+  Map<String, dynamic> toJson(final AEToken object) => object.toJson();
 }
 
 /// A class representing a token in the Archethic network.
 @freezed
-class AEToken with _$AEToken {
+abstract class AEToken with _$AEToken {
   /// Creates an [AEToken] instance.
   ///
   /// The [name], [symbol], [balance], [reserve], and [supply] have default values.
   /// If no [address] or [ucid] is provided, they will remain null.
   const factory AEToken({
     /// The name of the token.
-    @Default('') String name,
+    @Default('') final String name,
 
     /// The address of the token on the Archethic blockchain.
-    String? address,
+    final String? address,
 
     /// The icon URL or path representing the token.
-    String? icon,
+    final String? icon,
 
     /// The symbol of the token.
-    @Default('') String symbol,
+    @Default('') final String symbol,
 
     /// The current balance of the token.
-    @Default(0.0) double balance,
+    @Default(0.0) final double balance,
 
     /// The reserve balance of the token.
-    @Default(0.0) double reserve,
+    @Default(0.0) final double reserve,
 
     /// The total supply of the token.
-    @Default(0.0) double supply,
+    @Default(0.0) final double supply,
 
     /// Indicates if the token is verified.
-    @Default(false) bool isVerified,
+    @Default(false) final bool isVerified,
 
     /// Indicates if the token is a liquidity provider token.
-    @Default(false) bool isLpToken,
+    @Default(false) final bool isLpToken,
 
     /// The pair of tokens for LP tokens.
-    @AETokenPairJsonConverter() AETokenPair? lpTokenPair,
-    int? ucid,
+    @AETokenPairJsonConverter() final AETokenPair? lpTokenPair,
+    final int? ucid,
   }) = _AEToken;
   const AEToken._();
 
   /// Creates an [AEToken] instance from a JSON object.
-  factory AEToken.fromJson(Map<String, dynamic> json) =>
+  factory AEToken.fromJson(final Map<String, dynamic> json) =>
       _$AETokenFromJson(json);
 
   /// Determines if the token is the Archethic Universal Coin (UCO).
@@ -68,8 +68,5 @@ class AEToken with _$AEToken {
 }
 
 /// A constant instance of the Archethic Universal Coin (UCO) token.
-AEToken get ucoToken => const AEToken(
-      name: 'Universal Coin',
-      symbol: 'UCO',
-      ucid: 6887,
-    );
+AEToken get ucoToken =>
+    const AEToken(name: 'Universal Coin', symbol: 'UCO', ucid: 6887);
