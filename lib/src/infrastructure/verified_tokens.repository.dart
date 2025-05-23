@@ -12,9 +12,9 @@ class VerifiedTokensRepositoryImpl
     required this.apiService,
     required this.environment,
   }) : assert(
-          apiService.endpoint == environment.endpoint,
-          'ApiService should use `${environment.endpoint}` endpoint',
-        );
+         apiService.endpoint == environment.endpoint,
+         'ApiService should use `${environment.endpoint}` endpoint',
+       );
 
   final ApiService apiService;
   final Environment environment;
@@ -30,24 +30,24 @@ class VerifiedTokensRepositoryImpl
   }
 
   @override
-  Future<List<String>> getVerifiedTokens() async {
+  Future<List<String>> getVerifiedTokens() {
     return switch (environment) {
       Environment.testnet => _getVerifiedTokensFromBlockchain(
-          '0000b01e7a497f0576a004c5957d14956e165a6f301d76cda35ba49be4444dac00eb',
-        ),
+        '0000b01e7a497f0576a004c5957d14956e165a6f301d76cda35ba49be4444dac00eb',
+      ),
       Environment.mainnet => _getVerifiedTokensFromBlockchain(
-          '000030ed4ed79a05cfaa90b803c0ba933307de9923064651975b59047df3aaf223bb',
-        ),
+        '000030ed4ed79a05cfaa90b803c0ba933307de9923064651975b59047df3aaf223bb',
+      ),
       Environment.devnet => _getLocalVerifiedTokens().then(
-          (local) => local.devnet,
-        ),
+        (final local) => local.devnet,
+      ),
     };
   }
 
   @override
   bool isVerifiedToken(
-    String address,
-    List<String> verifiedTokensList,
+    final String address,
+    final List<String> verifiedTokensList,
   ) {
     if (verifiedTokensList.contains(address.toUpperCase())) {
       return true;
@@ -56,15 +56,18 @@ class VerifiedTokensRepositoryImpl
   }
 
   Future<List<String>> _getVerifiedTokensFromBlockchain(
-    String txAddress,
+    final String txAddress,
   ) async {
-    final lastAddressMap = await apiService
-        .getLastTransaction([txAddress], request: 'data { content }');
+    final lastAddressMap = await apiService.getLastTransaction([
+      txAddress,
+      // ignore: require_trailing_commas
+    ], request: 'data { content }');
     if (lastAddressMap[txAddress] != null &&
         lastAddressMap[txAddress]!.data != null &&
         lastAddressMap[txAddress]!.data!.content != null) {
-      final Map<String, dynamic> jsonMap =
-          jsonDecode(lastAddressMap[txAddress]!.data!.content!);
+      final Map<String, dynamic> jsonMap = jsonDecode(
+        lastAddressMap[txAddress]!.data!.content!,
+      );
       if (jsonMap['verifiedTokens'] != null &&
           jsonMap['verifiedTokens']['tokens'] != null) {
         return List.from(jsonMap['verifiedTokens']['tokens']);

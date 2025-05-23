@@ -8,24 +8,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class InProgressPopup {
   static Future<void> getDialog(
-    BuildContext context,
-    List<Widget> Function(BuildContext context, WidgetRef ref) bodyBuilder,
-    PopupCloseButton Function(BuildContext context, WidgetRef ref)
-        closeButtonBuilder, {
-    bool useSafeArea = false,
-    bool useRootNavigator = false,
-    double height = 400,
-  }) async {
+    final BuildContext context,
+    final List<Widget> Function(BuildContext context, WidgetRef ref)
+    bodyBuilder,
+    final PopupCloseButton Function(BuildContext context, WidgetRef ref)
+    closeButtonBuilder, {
+    final bool useSafeArea = false,
+    final bool useRootNavigator = false,
+    final double height = 400,
+  }) {
     return showDialog<void>(
       context: context,
       useSafeArea: useSafeArea,
       useRootNavigator: useRootNavigator,
-      builder: (context) {
+      builder: (final context) {
         return ScaffoldMessenger(
           child: Builder(
-            builder: (context) {
+            builder: (final context) {
               return Consumer(
-                builder: (context, ref, _) {
+                builder: (final context, final ref, _) {
                   return Scaffold(
                     backgroundColor: Colors.transparent.withAlpha(120),
                     body: AlertDialog(
@@ -38,8 +39,10 @@ class InProgressPopup {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: BackdropFilter(
-                                filter:
-                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                filter: ImageFilter.blur(
+                                  sigmaX: 10,
+                                  sigmaY: 10,
+                                ),
                                 child: Container(
                                   margin: const EdgeInsets.only(
                                     top: 30,
@@ -58,9 +61,7 @@ class InProgressPopup {
                                   child: Stack(
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.only(
-                                          top: 300,
-                                        ),
+                                        padding: EdgeInsets.only(top: 300),
                                         child: Card(
                                           color: Colors.transparent,
                                           clipBehavior: Clip.antiAlias,

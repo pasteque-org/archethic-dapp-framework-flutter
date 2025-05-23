@@ -9,7 +9,10 @@ class DefTokensRepositoryImpl implements DefTokensRepositoryInterface {
   DefTokensRepositoryImpl();
 
   @override
-  Future<AEToken?> getDefToken(Environment environment, String address) async {
+  Future<AEToken?> getDefToken(
+    final Environment environment,
+    final String address,
+  ) async {
     final jsonContent = await rootBundle.loadString(
       'packages/archethic_dapp_framework_flutter/lib/src/domain/repositories/tokens/def_tokens.json',
     );
@@ -34,7 +37,7 @@ class DefTokensRepositoryImpl implements DefTokensRepositoryInterface {
         }
       }
       return defToken;
-    } catch (e) {
+    } on Exception catch (_) {
       return null;
     }
   }

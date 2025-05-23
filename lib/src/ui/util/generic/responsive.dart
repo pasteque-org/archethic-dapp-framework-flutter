@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
   const Responsive({
-    super.key,
     required this.mobile,
     required this.tablet,
     required this.desktop,
+    super.key,
   });
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;
 
-  static bool isMobile(BuildContext context) =>
+  static bool isMobile(final BuildContext context) =>
       MediaQuery.sizeOf(context).width < 650;
 
-  static bool isTablet(BuildContext context) =>
+  static bool isTablet(final BuildContext context) =>
       MediaQuery.sizeOf(context).width < 1100 &&
       MediaQuery.sizeOf(context).width >= 650;
 
-  static bool isDesktop(BuildContext context) =>
+  static bool isDesktop(final BuildContext context) =>
       MediaQuery.sizeOf(context).width >= 1100;
 
   static double fontSizeFromTextStyle(
-    BuildContext context,
-    TextStyle textStyle,
+    final BuildContext context,
+    final TextStyle textStyle,
   ) {
     if (Responsive.isDesktop(context)) {
       return textStyle.fontSize!;
@@ -36,10 +36,10 @@ class Responsive extends StatelessWidget {
   }
 
   static double fontSizeFromValue(
-    BuildContext context, {
-    required double desktopValue,
-    double ratioTablet = 2,
-    double ratioMobile = 4,
+    final BuildContext context, {
+    required final double desktopValue,
+    final double ratioTablet = 2,
+    final double ratioMobile = 4,
   }) {
     if (Responsive.isDesktop(context)) {
       return desktopValue;
@@ -52,9 +52,9 @@ class Responsive extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) {
+      builder: (final context, final constraints) {
         if (constraints.maxWidth >= 1100) {
           return desktop;
         } else if (constraints.maxWidth >= 650) {

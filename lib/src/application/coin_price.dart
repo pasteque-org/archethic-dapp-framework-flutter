@@ -35,7 +35,9 @@ class _CoinPricesNotifier extends _$CoinPricesNotifier {
   ///
   /// The prices are updated every minute using the repository.
   Future<void> startTimer() async {
-    if (_timer != null) return;
+    if (_timer != null) {
+      return;
+    }
 
     _logger.info('Start timer');
     state = (await ref.read(_coinPriceRepositoryProvider).fetchPrices())!;
@@ -47,7 +49,9 @@ class _CoinPricesNotifier extends _$CoinPricesNotifier {
   /// Stops the periodic price fetch timer.
   Future<void> stopTimer() async {
     _logger.info('Stop timer');
-    if (_timer == null) return;
+    if (_timer == null) {
+      return;
+    }
     _timer?.cancel();
     _timer = null;
   }
@@ -57,9 +61,7 @@ class _CoinPricesNotifier extends _$CoinPricesNotifier {
 ///
 /// This repository is used to fetch cryptocurrency prices from an external source.
 @riverpod
-CoinPriceRepositoryImpl _coinPriceRepository(
-  Ref ref,
-) =>
+CoinPriceRepositoryImpl _coinPriceRepository(final Ref ref) =>
     CoinPriceRepositoryImpl();
 
 /// Fetches the price of a cryptocurrency based on its address.
@@ -73,15 +75,13 @@ CoinPriceRepositoryImpl _coinPriceRepository(
 /// ```
 @riverpod
 Future<double> _coinPrice(
-  Ref ref, {
-  required String address,
-  Environment? environment,
+  final Ref ref, {
+  required final String address,
+  final Environment? environment,
 }) async {
   try {
     // Fetch the latest cryptocurrency prices.
-    final coinPrice = ref.watch(
-      CoinPriceProviders.coinPrices,
-    );
+    final coinPrice = ref.watch(CoinPriceProviders.coinPrices);
 
     // Resolve the UCID for the given address and environment.
     final ucid = await ref.watch(
@@ -99,7 +99,7 @@ Future<double> _coinPrice(
     return ref
         .watch(_coinPriceRepositoryProvider)
         .getPriceFromUcid(ucid, coinPrice);
-  } catch (e) {
+  } on Exception catch (_) {
     // Return 0 in case of an error.
     return 0;
   }

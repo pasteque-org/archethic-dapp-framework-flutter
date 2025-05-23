@@ -7,8 +7,8 @@ import 'package:intl/intl.dart';
 class ContactInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
+    final TextEditingValue oldValue,
+    final TextEditingValue newValue,
   ) {
     if (newValue.selection.baseOffset == 0) {
       return newValue;
@@ -41,8 +41,8 @@ class ContactInputFormatter extends TextInputFormatter {
 class SingleSpaceInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
+    final TextEditingValue oldValue,
+    final TextEditingValue newValue,
   ) {
     if (newValue.selection.baseOffset == 0) {
       return newValue;
@@ -65,8 +65,8 @@ class SingleSpaceInputFormatter extends TextInputFormatter {
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
+    final TextEditingValue oldValue,
+    final TextEditingValue newValue,
   ) {
     return TextEditingValue(
       text: newValue.text.toUpperCase(),
@@ -79,8 +79,8 @@ class UpperCaseTextFormatter extends TextInputFormatter {
 class LowerCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
+    final TextEditingValue oldValue,
+    final TextEditingValue newValue,
   ) {
     return TextEditingValue(
       text: newValue.text.toLowerCase(),
@@ -104,19 +104,20 @@ class AmountTextInputFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
+    final TextEditingValue oldValue,
+    final TextEditingValue newValue,
   ) {
     if (newValue.text.isEmpty) {
       return newValue;
     }
 
     final valueFiltered = TextEditingValue(
-      text: useUnifyDecimalSeparator
-          ? newValue.text
-              .unifyDecimalSeparator()
-              .removeIllegalNumberCharacters()
-          : newValue.text.removeIllegalNumberCharacters(),
+      text:
+          useUnifyDecimalSeparator
+              ? newValue.text
+                  .unifyDecimalSeparator()
+                  .removeIllegalNumberCharacters()
+              : newValue.text.removeIllegalNumberCharacters(),
     );
 
     if (!valueFiltered.text.isValidNumber()) {
@@ -125,9 +126,10 @@ class AmountTextInputFormatter extends TextInputFormatter {
 
     final parts = valueFiltered.text.split(decimalSeparator);
     final integerPart = parts[0].replaceAll(thousandsSeparator, '');
-    final decimalPart = parts.length > 1
-        ? decimalSeparator + parts[1].limitLength(precision)
-        : '';
+    final decimalPart =
+        parts.length > 1
+            ? decimalSeparator + parts[1].limitLength(precision)
+            : '';
 
     final formattedIntegerPart = _formatIntegerPart(integerPart);
 
@@ -144,20 +146,18 @@ class AmountTextInputFormatter extends TextInputFormatter {
     );
   }
 
-  String _formatIntegerPart(String integerPart) {
+  String _formatIntegerPart(final String integerPart) {
     final reversedString = integerPart.split('').reversed.join();
     final formattedReversedString = reversedString.replaceAllMapped(
       RegExp(r'(\d{3})(?=\d)'),
-      (match) => '${match.group(0)}$thousandsSeparator',
+      (final match) => '${match.group(0)}$thousandsSeparator',
     );
     return formattedReversedString.split('').reversed.join();
   }
 }
 
 extension DoubleNumberExt on double {
-  String formatNumber({
-    int? precision,
-  }) {
+  String formatNumber({final int? precision}) {
     if (precision != null) {
       if (precision <= 2) {
         final f = NumberFormat('#,##0.${''.padRight(precision, '0')}', 'en_US');
@@ -187,27 +187,31 @@ extension StringNumberExt on String {
 
   bool isValidNumber() => double.tryParse(this) != null;
 
-  String integerPart(String separator) {
+  String integerPart(final String separator) {
     final parts = split(separator);
-    if (parts.isEmpty) return '';
+    if (parts.isEmpty) {
+      return '';
+    }
 
     return parts.first;
   }
 
-  bool hasDecimalPart(String separator) => contains(separator);
+  bool hasDecimalPart(final String separator) => contains(separator);
 
-  String decimalPart(String separator) {
+  String decimalPart(final String separator) {
     final parts = split(separator);
-    if (parts.length < 2) return '';
+    if (parts.length < 2) {
+      return '';
+    }
 
     return parts[1];
   }
 
-  String limitLength(int maxLength) {
+  String limitLength(final int maxLength) {
     return substring(0, min(length, maxLength));
   }
 
-  String splitFromRight(int interval, String separator) {
+  String splitFromRight(final int interval, final String separator) {
     final leftPartLength = length % interval;
     final parts = length ~/ interval;
 
@@ -216,7 +220,9 @@ extension StringNumberExt on String {
     if (leftPartLength > 0) {
       resultBuilder.write(substring(0, leftPartLength));
 
-      if (parts > 0) resultBuilder.write(separator);
+      if (parts > 0) {
+        resultBuilder.write(separator);
+      }
     }
 
     for (var i = 0; i < parts; i++) {
@@ -229,11 +235,11 @@ extension StringNumberExt on String {
     return resultBuilder.toString();
   }
 
-  String reduceSymbol({int lengthMax = 5}) {
+  String reduceSymbol({final int lengthMax = 5}) {
     String subOnCharacter({
-      required String str,
-      required int from,
-      required int to,
+      required final String str,
+      required final int from,
+      required final int to,
     }) {
       final runes = str.runes.toList();
       var result = '';

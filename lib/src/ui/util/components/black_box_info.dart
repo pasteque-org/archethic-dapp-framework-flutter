@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class BlackBoxInfo extends StatelessWidget {
   const BlackBoxInfo({
-    super.key,
     required this.textWidget,
     required this.additionalWidget,
+    super.key,
     this.onTap,
   });
 
@@ -14,13 +14,17 @@ class BlackBoxInfo extends StatelessWidget {
   final Function()? onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
         width: MediaQuery.sizeOf(context).width,
-        padding:
-            const EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+        padding: const EdgeInsets.only(
+          top: 10,
+          bottom: 10,
+          left: 10,
+          right: 10,
+        ),
         decoration: BoxDecoration(
           border: Border.all(
             color: ArchethicThemeBase.purple800.withValues(alpha: 0.4),

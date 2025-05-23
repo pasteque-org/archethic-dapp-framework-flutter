@@ -7,8 +7,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 class AppButton extends StatefulWidget {
   const AppButton({
-    super.key,
     required this.labelBtn,
+    super.key,
     this.onPressed,
     this.height = 40,
     this.disabled = false,
@@ -31,10 +31,10 @@ class AppButton extends StatefulWidget {
 }
 
 class AppButtonState extends State<AppButton> {
-  bool _over = false;
+  var _over = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -72,7 +72,7 @@ class AppButtonState extends State<AppButton> {
           ),
         ),
         onPressed: () {
-          if (widget.disabled == false) {
+          if (!widget.disabled) {
             widget.onPressed!();
           }
         },
@@ -86,11 +86,14 @@ class AppButtonState extends State<AppButton> {
                 textAlign: TextAlign.center,
                 stepGranularity: 0.5,
                 style: TextStyle(
-                  color: widget.textColor == null
-                      ? widget.disabled
-                          ? ArchethicThemeBase.neutral0.withValues(alpha: 0.3)
-                          : ArchethicThemeBase.neutral0
-                      : widget.disabled
+                  color:
+                      widget.textColor == null
+                          ? widget.disabled
+                              ? ArchethicThemeBase.neutral0.withValues(
+                                alpha: 0.3,
+                              )
+                              : ArchethicThemeBase.neutral0
+                          : widget.disabled
                           ? widget.textColor!.withValues(alpha: 0.3)
                           : widget.textColor,
                   fontSize: Responsive.fontSizeFromValue(

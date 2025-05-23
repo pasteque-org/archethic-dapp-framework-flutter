@@ -6,9 +6,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 class ButtonHalf extends StatelessWidget {
   const ButtonHalf({
-    super.key,
     required this.balanceAmount,
     required this.onTap,
+    super.key,
     this.height,
     this.style,
   });
@@ -19,7 +19,7 @@ class ButtonHalf extends StatelessWidget {
   final TextStyle? style;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (balanceAmount <= 0) {
       return const SizedBox.shrink();
     }
@@ -27,36 +27,33 @@ class ButtonHalf extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: height,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppThemeBase.halfButtonColor),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 2),
-          child: Text(
-            AppLocalizations.of(context)!.aedappfm_btn_half,
-            style: style ??
-                DefaultTextStyle.of(context).style.copyWith(
+            height: height,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: AppThemeBase.halfButtonColor),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Text(
+                AppLocalizations.of(context)!.aedappfm_btn_half,
+                style:
+                    style ??
+                    DefaultTextStyle.of(context).style.copyWith(
                       color: AppThemeBase.halfButtonColor,
                       fontSize: Responsive.fontSizeFromTextStyle(
                         context,
                         DefaultTextStyle.of(context).style,
                       ),
                     ),
-          ),
-        ),
-      )
-          .animate()
-          .fade(
-            duration: const Duration(milliseconds: 300),
+              ),
+            ),
           )
-          .scale(
-            duration: const Duration(milliseconds: 300),
-          ),
+          .animate()
+          .fade(duration: const Duration(milliseconds: 300))
+          .scale(duration: const Duration(milliseconds: 300)),
     );
   }
 }

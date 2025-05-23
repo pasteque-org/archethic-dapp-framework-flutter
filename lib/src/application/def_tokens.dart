@@ -7,17 +7,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'def_tokens.g.dart';
 
 @riverpod
-DefTokensRepositoryImpl defTokensRepositoryImpl(
-  Ref ref,
-) =>
+DefTokensRepositoryImpl defTokensRepositoryImpl(final Ref ref) =>
     DefTokensRepositoryImpl();
 
 @riverpod
 Future<AEToken?> getDefToken(
-  Ref ref,
-  Environment environment,
-  String address,
-) async {
+  final Ref ref,
+  final Environment environment,
+  final String address,
+) {
   return ref
       .watch(defTokensRepositoryImplProvider)
       .getDefToken(environment, address);

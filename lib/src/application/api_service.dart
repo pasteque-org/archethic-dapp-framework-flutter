@@ -6,8 +6,5 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'api_service.g.dart';
 
 @riverpod
-ApiService apiService(
-  Ref ref,
-  Environment environment,
-) =>
+ApiService apiService(final Ref ref, final Environment environment) =>
     ApiService(environment.endpoint);

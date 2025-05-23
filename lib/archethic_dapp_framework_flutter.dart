@@ -1,4 +1,5 @@
 /// An internal framework for archethic flutter development
+// ignore: unnecessary_library_name
 library archethic_dapp_framework_flutter;
 
 export 'src/application/ae_token.dart';

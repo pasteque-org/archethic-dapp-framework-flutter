@@ -18,8 +18,8 @@ class InProgressResumeBtn extends StatelessWidget {
   final Failure? failure;
 
   @override
-  Widget build(BuildContext context) {
-    if (isProcessInProgress == false && failure != null && currentStep > 0) {
+  Widget build(final BuildContext context) {
+    if (!isProcessInProgress && failure != null && currentStep > 0) {
       return AppButton(
         labelBtn: AppLocalizations.of(context)!.aedappfm_btn_resume,
         onPressed: onPressed,

@@ -23,10 +23,10 @@ class IconButtonAnimated extends ConsumerStatefulWidget {
 }
 
 class IconButtonAnimatedState extends ConsumerState<IconButtonAnimated> {
-  bool _over = false;
+  var _over = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MouseRegion(
       onEnter: (_) {
         setState(() {

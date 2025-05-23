@@ -13,12 +13,12 @@ class FailureJsonConverter
   const FailureJsonConverter();
 
   @override
-  Failure fromJson(Map<String, dynamic> json) {
+  Failure fromJson(final Map<String, dynamic> json) {
     return Failure.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(Failure object) => object.toJson();
+  Map<String, dynamic> toJson(final Failure object) => object.toJson();
 }
 
 /// Represents various types of failures that can occur in the application.
@@ -28,7 +28,7 @@ class FailureJsonConverter
 /// to manage. The class implements [Exception] to integrate with Dart's
 /// exception-handling mechanism.
 @freezed
-class Failure with _$Failure implements Exception {
+sealed class Failure with _$Failure implements Exception {
   const Failure._();
 
   /// A failure that occurs when the user is logged out.
@@ -40,9 +40,8 @@ class Failure with _$Failure implements Exception {
   /// A failure that occurs when a quota is exceeded.
   ///
   /// [cooldownEndDate] specifies the time when the quota will reset.
-  const factory Failure.quotaExceeded({
-    DateTime? cooldownEndDate,
-  }) = QuotaExceededFailure;
+  const factory Failure.quotaExceeded({final DateTime? cooldownEndDate}) =
+      QuotaExceededFailure;
 
   /// A failure that occurs when a requested service is not found.
   const factory Failure.serviceNotFound() = ServiceNotFound;
@@ -84,9 +83,7 @@ class Failure with _$Failure implements Exception {
   /// A failure that occurs due to a mismatch in the network.
   ///
   /// [cause] describes the reason for the mismatch.
-  const factory Failure.wrongNetwork(
-    String cause,
-  ) = WrongNetwork;
+  const factory Failure.wrongNetwork(final String cause) = WrongNetwork;
 
   /// A failure that occurs due to insufficient pool funds.
   const factory Failure.insufficientPoolFunds() = InsufficientPoolFunds;
@@ -121,30 +118,28 @@ class Failure with _$Failure implements Exception {
   /// A failure that occurs due to an RPC error in EVM.
   ///
   /// [cause] specifies the reason for the error.
-  const factory Failure.rpcErrorEVM(
-    String? cause,
-  ) = RPCErrorEVM;
+  const factory Failure.rpcErrorEVM(final String? cause) = RPCErrorEVM;
 
   /// A generic failure type for other errors.
   ///
   /// [cause] specifies the reason for the failure.
   /// [stack] contains the stack trace for debugging purposes.
-  const factory Failure.other({
-    String? cause,
-    String? stack,
-  }) = OtherFailure;
+  const factory Failure.other({final String? cause, final String? stack}) =
+      OtherFailure;
 
   /// Creates a [Failure] instance from an [error] object.
   ///
   /// If the error is already a [Failure], it is returned as is.
   /// Otherwise, an [OtherFailure] is created.
-  factory Failure.fromError(Object error) {
-    if (error is Failure) return error;
+  factory Failure.fromError(final Object error) {
+    if (error is Failure) {
+      return error;
+    }
 
     return const Failure.other();
   }
 
   /// Creates a [Failure] instance from a JSON object.
-  factory Failure.fromJson(Map<String, dynamic> json) =>
+  factory Failure.fromJson(final Map<String, dynamic> json) =>
       _$FailureFromJson(json);
 }

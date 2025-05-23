@@ -19,7 +19,7 @@ class SingleCard extends StatelessWidget {
   final Color? decorationBorderColor;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: BackdropFilter(

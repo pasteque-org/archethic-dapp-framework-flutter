@@ -22,35 +22,35 @@ part 'crypto_price.g.dart';
 /// );
 /// ```
 @freezed
-class CryptoPrice with _$CryptoPrice {
+abstract class CryptoPrice with _$CryptoPrice {
   /// Creates a [CryptoPrice] instance.
   ///
   /// The [timestamp] represents the time when the price data was recorded.
   /// All cryptocurrency prices default to `0.0` if not specified.
   factory CryptoPrice({
     /// The timestamp of the price data, represented as a UNIX timestamp.
-    int? timestamp,
+    final int? timestamp,
 
     /// The price of Bitcoin (BTC) in USD or the relevant currency.
-    @Default(0.0) double bitcoin,
+    @Default(0.0) final double bitcoin,
 
     /// The price of Matic (Polygon) in USD or the relevant currency.
-    @Default(0.0) double matic,
+    @Default(0.0) final double matic,
 
     /// The price of Ethereum (ETH) in USD or the relevant currency.
-    @Default(0.0) double ethereum,
+    @Default(0.0) final double ethereum,
 
     /// The price of Binance Coin (BNB) in USD or the relevant currency.
-    @Default(0.0) double bnb,
+    @Default(0.0) final double bnb,
 
     /// The price of USD Coin (USDC) in USD or the relevant currency.
-    @Default(0.0) double usdc,
+    @Default(0.0) final double usdc,
 
     /// The price of EURE (a euro-backed stablecoin) in USD or the relevant currency.
-    @Default(0.0) double eure,
+    @Default(0.0) final double eure,
   }) = _CryptoPrice;
 
   /// Creates a [CryptoPrice] instance from a JSON object.
-  factory CryptoPrice.fromJson(Map<String, dynamic> json) =>
+  factory CryptoPrice.fromJson(final Map<String, dynamic> json) =>
       _$CryptoPriceFromJson(json);
 }

@@ -4,12 +4,10 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class PopupWaves extends StatelessWidget {
-  const PopupWaves({
-    super.key,
-  });
+  const PopupWaves({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return WaveWidget(
       config: CustomConfig(
         gradients: [
@@ -26,16 +24,8 @@ class PopupWaves extends StatelessWidget {
             ArchethicThemeBase.purple500.withValues(alpha: 0.1),
           ],
         ],
-        durations: [
-          35000,
-          19440,
-          10800,
-        ],
-        heightPercentages: [
-          0.20,
-          0.23,
-          0.25,
-        ],
+        durations: [35000, 19440, 10800],
+        heightPercentages: [0.20, 0.23, 0.25],
         gradientBegin: Alignment.bottomLeft,
         gradientEnd: Alignment.topRight,
       ),

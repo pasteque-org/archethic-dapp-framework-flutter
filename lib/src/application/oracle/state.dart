@@ -6,10 +6,10 @@ part 'state.g.dart';
 
 extension OraclePriceConverterExt on OracleUcoPrice {
   ArchethicOracleUCO get toArchethic => ArchethicOracleUCO(
-        timestamp: timestamp ?? 0,
-        eur: uco?.eur ?? 0,
-        usd: uco?.usd ?? 0,
-      );
+    timestamp: timestamp ?? 0,
+    eur: uco?.eur ?? 0,
+    usd: uco?.usd ?? 0,
+  );
 }
 
 /// A JSON converter for [ArchethicOracleUCO].
@@ -22,12 +22,13 @@ class ArchethicOracleUCOJsonConverter
   const ArchethicOracleUCOJsonConverter();
 
   @override
-  ArchethicOracleUCO fromJson(Map<String, dynamic> json) {
+  ArchethicOracleUCO fromJson(final Map<String, dynamic> json) {
     return ArchethicOracleUCO.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(ArchethicOracleUCO object) => object.toJson();
+  Map<String, dynamic> toJson(final ArchethicOracleUCO object) =>
+      object.toJson();
 }
 
 /// Represents the UCO price information provided by the Archethic Oracle.
@@ -45,26 +46,26 @@ class ArchethicOracleUCOJsonConverter
 /// );
 /// ```
 @freezed
-class ArchethicOracleUCO with _$ArchethicOracleUCO {
+abstract class ArchethicOracleUCO with _$ArchethicOracleUCO {
   /// Creates a new [ArchethicOracleUCO] instance.
   ///
   /// [timestamp] represents the time when the data was retrieved (in UNIX format).
   /// [eur] and [usd] represent the price of UCO in Euros and US Dollars, respectively.
   const factory ArchethicOracleUCO({
     /// The timestamp (UNIX format) when the data was retrieved.
-    @Default(0) int timestamp,
+    @Default(0) final int timestamp,
 
     /// The price of UCO in Euros.
-    @Default(0) double eur,
+    @Default(0) final double eur,
 
     /// The price of UCO in US Dollars.
-    @Default(0) double usd,
+    @Default(0) final double usd,
   }) = _ArchethicOracleUCO;
 
   /// Creates an [ArchethicOracleUCO] instance from a JSON object.
   ///
   /// This factory method is used for deserializing JSON data into
   /// an [ArchethicOracleUCO] instance.
-  factory ArchethicOracleUCO.fromJson(Map<String, dynamic> json) =>
+  factory ArchethicOracleUCO.fromJson(final Map<String, dynamic> json) =>
       _$ArchethicOracleUCOFromJson(json);
 }

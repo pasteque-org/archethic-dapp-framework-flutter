@@ -14,12 +14,12 @@ class AETokenPairJsonConverter
   const AETokenPairJsonConverter();
 
   @override
-  AETokenPair fromJson(Map<String, dynamic> json) {
+  AETokenPair fromJson(final Map<String, dynamic> json) {
     return AETokenPair.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(AETokenPair object) => object.toJson();
+  Map<String, dynamic> toJson(final AETokenPair object) => object.toJson();
 }
 
 /// Represents a pair of tokens in the Archethic blockchain ecosystem.
@@ -35,22 +35,22 @@ class AETokenPairJsonConverter
 /// );
 /// ```
 @freezed
-class AETokenPair with _$AETokenPair {
+abstract class AETokenPair with _$AETokenPair {
   /// Creates an [AETokenPair] instance.
   ///
   /// Both [token1] and [token2] must be provided and are required to be of type [AEToken].
 
   const factory AETokenPair({
     /// The first token in the pair.
-    @AETokenJsonConverter() required AEToken token1,
+    @AETokenJsonConverter() required final AEToken token1,
 
     /// The second token in the pair.
-    @AETokenJsonConverter() required AEToken token2,
+    @AETokenJsonConverter() required final AEToken token2,
   }) = _AETokenPair;
 
   const AETokenPair._();
 
   /// Creates an [AETokenPair] instance from a JSON object.
-  factory AETokenPair.fromJson(Map<String, dynamic> json) =>
+  factory AETokenPair.fromJson(final Map<String, dynamic> json) =>
       _$AETokenPairFromJson(json);
 }

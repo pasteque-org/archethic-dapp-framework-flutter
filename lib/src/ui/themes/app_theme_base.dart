@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 part 'archethic_theme_base.dart';
 
 class AppThemeBase {
-  static String mainFont = 'Telegraf';
-  static String addressFont = 'Roboto';
+  static var mainFont = 'Telegraf';
+  static var addressFont = 'Roboto';
 
   static Color primaryColor = ArchethicThemeBase.purple500;
   static Color secondaryColor = ArchethicThemeBase.raspberry300;
@@ -26,19 +26,13 @@ class AppThemeBase {
   );
 
   static Gradient gradientWelcomeTxt = LinearGradient(
-    colors: [
-      ArchethicThemeBase.raspberry300,
-      ArchethicThemeBase.raspberry500,
-    ],
+    colors: [ArchethicThemeBase.raspberry300, ArchethicThemeBase.raspberry500],
     begin: Alignment.bottomRight,
     end: Alignment.topLeft,
   );
 
   static Gradient gradientBtn = LinearGradient(
-    colors: <Color>[
-      ArchethicThemeBase.blue400,
-      ArchethicThemeBase.blue600,
-    ],
+    colors: <Color>[ArchethicThemeBase.blue400, ArchethicThemeBase.blue600],
   );
 
   static Color sheetBackground = ArchethicThemeBase.brightPurpleBackground;
@@ -79,27 +73,18 @@ class AppThemeBase {
   );
 
   static Gradient gradientCircularStepProgressIndicator = LinearGradient(
-    colors: [
-      statusInProgress,
-      ArchethicThemeBase.systemInfo500,
-    ],
+    colors: [statusInProgress, ArchethicThemeBase.systemInfo500],
     stops: const [0, 1],
   );
 
   static Gradient gradientCircularStepProgressIndicatorFinished =
       LinearGradient(
-    colors: [
-      statusOK,
-      ArchethicThemeBase.systemPositive600,
-    ],
-    stops: const [0, 1],
-  );
+        colors: [statusOK, ArchethicThemeBase.systemPositive600],
+        stops: const [0, 1],
+      );
 
   static Gradient gradientCircularStepProgressIndicatorError = LinearGradient(
-    colors: [
-      ArchethicThemeBase.systemDanger600,
-      statusKO,
-    ],
+    colors: [ArchethicThemeBase.systemDanger600, statusKO],
     stops: const [0, 1],
   );
 

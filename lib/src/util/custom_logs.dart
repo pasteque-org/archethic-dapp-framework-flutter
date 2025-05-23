@@ -20,7 +20,8 @@ class LogManager {
     this.remoteLogsEnabled = true,
   }) {
     if (!kDebugMode) {
-      _timer = Timer.periodic(sendInterval, (Timer t) => _sendLogs());
+      // ignore: discarded_futures
+      _timer = Timer.periodic(sendInterval, (_) => _sendLogs());
     }
   }
   final Duration sendInterval;
@@ -31,21 +32,18 @@ class LogManager {
   final String url;
 
   void log(
-    String message, {
-    String? name,
-    Object? error,
-    StackTrace? stackTrace,
-    LogLevel level = LogLevel.info,
+    final String message, {
+    final String? name,
+    final Object? error,
+    final StackTrace? stackTrace,
+    final LogLevel level = LogLevel.info,
   }) {
-    final _logger = Logger(name ?? 'ArchethicDApp');
+    final logger = Logger(name ?? 'ArchethicDApp');
 
-    if (message.isEmpty) return;
-    _logger.log(
-      level.toLogger,
-      message,
-      error,
-      stackTrace,
-    );
+    if (message.isEmpty) {
+      return;
+    }
+    logger.log(level.toLogger, message, error, stackTrace);
     if (remoteLogsEnabled && !kDebugMode) {
       final timeStamp = DateTime.now().toIso8601String();
       final logEntry = <String, dynamic>{
@@ -57,34 +55,33 @@ class LogManager {
       };
       _logQueue.add(logEntry);
       if (_logQueue.length >= batchSize) {
+        // ignore: discarded_futures
         _sendLogs();
       }
     }
   }
 
   Future<void> _sendLogs() async {
-    if (_logQueue.isEmpty) return;
+    if (_logQueue.isEmpty) {
+      return;
+    }
 
-    final _logger = Logger('ArchethicDAppLogger');
+    final logger = Logger('ArchethicDAppLogger');
     try {
       final response = await http.post(
-        Uri.parse(
-          url,
-        ),
+        Uri.parse(url),
         body: json.encode(_logQueue),
       );
 
       if (response.statusCode == 200) {
         _logQueue = [];
       } else {
-        _logger.warning(
+        logger.warning(
           'Failed to send logs to server, response status code: ${response.statusCode}',
         );
       }
-    } catch (e) {
-      _logger.warning(
-        'Error sending logs to server: $e',
-      );
+    } on Exception catch (e) {
+      logger.warning('Error sending logs to server: $e');
     }
   }
 

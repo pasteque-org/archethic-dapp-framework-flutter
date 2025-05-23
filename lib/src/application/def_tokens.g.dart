@@ -7,26 +7,27 @@ part of 'def_tokens.dart';
 // **************************************************************************
 
 String _$defTokensRepositoryImplHash() =>
-    r'122b13dce1c40b8bb0c2f5d5d0ab2d3825aa7e9c';
+    r'806e714403f82b915d0326f819a1423f9d6a7893';
 
 /// See also [defTokensRepositoryImpl].
 @ProviderFor(defTokensRepositoryImpl)
 final defTokensRepositoryImplProvider =
     AutoDisposeProvider<DefTokensRepositoryImpl>.internal(
-  defTokensRepositoryImpl,
-  name: r'defTokensRepositoryImplProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$defTokensRepositoryImplHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      defTokensRepositoryImpl,
+      name: r'defTokensRepositoryImplProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$defTokensRepositoryImplHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef DefTokensRepositoryImplRef
-    = AutoDisposeProviderRef<DefTokensRepositoryImpl>;
-String _$getDefTokenHash() => r'6dc037580b95cd2e73808d831eef8278bbe4eca4';
+typedef DefTokensRepositoryImplRef =
+    AutoDisposeProviderRef<DefTokensRepositoryImpl>;
+String _$getDefTokenHash() => r'50f24c44fb1f600febf93895e1be570c7628f3ea';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -59,24 +60,15 @@ class GetDefTokenFamily extends Family<AsyncValue<AEToken?>> {
   const GetDefTokenFamily();
 
   /// See also [getDefToken].
-  GetDefTokenProvider call(
-    Environment environment,
-    String address,
-  ) {
-    return GetDefTokenProvider(
-      environment,
-      address,
-    );
+  GetDefTokenProvider call(Environment environment, String address) {
+    return GetDefTokenProvider(environment, address);
   }
 
   @override
   GetDefTokenProvider getProviderOverride(
     covariant GetDefTokenProvider provider,
   ) {
-    return call(
-      provider.environment,
-      provider.address,
-    );
+    return call(provider.environment, provider.address);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -97,27 +89,20 @@ class GetDefTokenFamily extends Family<AsyncValue<AEToken?>> {
 /// See also [getDefToken].
 class GetDefTokenProvider extends AutoDisposeFutureProvider<AEToken?> {
   /// See also [getDefToken].
-  GetDefTokenProvider(
-    Environment environment,
-    String address,
-  ) : this._internal(
-          (ref) => getDefToken(
-            ref as GetDefTokenRef,
-            environment,
-            address,
-          ),
-          from: getDefTokenProvider,
-          name: r'getDefTokenProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$getDefTokenHash,
-          dependencies: GetDefTokenFamily._dependencies,
-          allTransitiveDependencies:
-              GetDefTokenFamily._allTransitiveDependencies,
-          environment: environment,
-          address: address,
-        );
+  GetDefTokenProvider(Environment environment, String address)
+    : this._internal(
+        (ref) => getDefToken(ref as GetDefTokenRef, environment, address),
+        from: getDefTokenProvider,
+        name: r'getDefTokenProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$getDefTokenHash,
+        dependencies: GetDefTokenFamily._dependencies,
+        allTransitiveDependencies: GetDefTokenFamily._allTransitiveDependencies,
+        environment: environment,
+        address: address,
+      );
 
   GetDefTokenProvider._internal(
     super._createNotifier, {
@@ -185,7 +170,8 @@ mixin GetDefTokenRef on AutoDisposeFutureProviderRef<AEToken?> {
 }
 
 class _GetDefTokenProviderElement
-    extends AutoDisposeFutureProviderElement<AEToken?> with GetDefTokenRef {
+    extends AutoDisposeFutureProviderElement<AEToken?>
+    with GetDefTokenRef {
   _GetDefTokenProviderElement(super.provider);
 
   @override
@@ -193,5 +179,6 @@ class _GetDefTokenProviderElement
   @override
   String get address => (origin as GetDefTokenProvider).address;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -19,7 +19,7 @@ class ButtonConfirm extends StatelessWidget {
   final List<double> dimens;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return AppButton(
       backgroundGradient: backgroundGradient,
       labelBtn: labelBtn,

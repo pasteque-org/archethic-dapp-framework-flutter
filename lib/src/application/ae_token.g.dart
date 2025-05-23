@@ -7,7 +7,7 @@ part of 'ae_token.dart';
 // **************************************************************************
 
 String _$estimateTokenInFiatHash() =>
-    r'3bdf7cb21f65e246142a45179d50be0987315e3b';
+    r'cf46ac1df654cb3ad21ed59f0f5f1de7fe708e81';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -84,21 +84,15 @@ class _EstimateTokenInFiatFamily extends Family<AsyncValue<double>> {
   /// ```
   ///
   /// Copied from [_estimateTokenInFiat].
-  _EstimateTokenInFiatProvider call(
-    AEToken token,
-  ) {
-    return _EstimateTokenInFiatProvider(
-      token,
-    );
+  _EstimateTokenInFiatProvider call(AEToken token) {
+    return _EstimateTokenInFiatProvider(token);
   }
 
   @override
   _EstimateTokenInFiatProvider getProviderOverride(
     covariant _EstimateTokenInFiatProvider provider,
   ) {
-    return call(
-      provider.token,
-    );
+    return call(provider.token);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -141,24 +135,20 @@ class _EstimateTokenInFiatProvider extends AutoDisposeFutureProvider<double> {
   /// ```
   ///
   /// Copied from [_estimateTokenInFiat].
-  _EstimateTokenInFiatProvider(
-    AEToken token,
-  ) : this._internal(
-          (ref) => _estimateTokenInFiat(
-            ref as _EstimateTokenInFiatRef,
-            token,
-          ),
-          from: _estimateTokenInFiatProvider,
-          name: r'_estimateTokenInFiatProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$estimateTokenInFiatHash,
-          dependencies: _EstimateTokenInFiatFamily._dependencies,
-          allTransitiveDependencies:
-              _EstimateTokenInFiatFamily._allTransitiveDependencies,
-          token: token,
-        );
+  _EstimateTokenInFiatProvider(AEToken token)
+    : this._internal(
+        (ref) => _estimateTokenInFiat(ref as _EstimateTokenInFiatRef, token),
+        from: _estimateTokenInFiatProvider,
+        name: r'_estimateTokenInFiatProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$estimateTokenInFiatHash,
+        dependencies: _EstimateTokenInFiatFamily._dependencies,
+        allTransitiveDependencies:
+            _EstimateTokenInFiatFamily._allTransitiveDependencies,
+        token: token,
+      );
 
   _EstimateTokenInFiatProvider._internal(
     super._createNotifier, {
@@ -224,5 +214,6 @@ class _EstimateTokenInFiatProviderElement
   @override
   AEToken get token => (origin as _EstimateTokenInFiatProvider).token;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

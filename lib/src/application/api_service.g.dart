@@ -6,7 +6,7 @@ part of 'api_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiServiceHash() => r'b9a10ec12ecc7ea5cf78d2eca9458a796871dc14';
+String _$apiServiceHash() => r'781837c3e2aa8c341ec8a45f196eb7f099ee441f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,21 +39,15 @@ class ApiServiceFamily extends Family<ApiService> {
   const ApiServiceFamily();
 
   /// See also [apiService].
-  ApiServiceProvider call(
-    Environment environment,
-  ) {
-    return ApiServiceProvider(
-      environment,
-    );
+  ApiServiceProvider call(Environment environment) {
+    return ApiServiceProvider(environment);
   }
 
   @override
   ApiServiceProvider getProviderOverride(
     covariant ApiServiceProvider provider,
   ) {
-    return call(
-      provider.environment,
-    );
+    return call(provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,19 @@ class ApiServiceFamily extends Family<ApiService> {
 /// See also [apiService].
 class ApiServiceProvider extends AutoDisposeProvider<ApiService> {
   /// See also [apiService].
-  ApiServiceProvider(
-    Environment environment,
-  ) : this._internal(
-          (ref) => apiService(
-            ref as ApiServiceRef,
-            environment,
-          ),
-          from: apiServiceProvider,
-          name: r'apiServiceProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$apiServiceHash,
-          dependencies: ApiServiceFamily._dependencies,
-          allTransitiveDependencies:
-              ApiServiceFamily._allTransitiveDependencies,
-          environment: environment,
-        );
+  ApiServiceProvider(Environment environment)
+    : this._internal(
+        (ref) => apiService(ref as ApiServiceRef, environment),
+        from: apiServiceProvider,
+        name: r'apiServiceProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$apiServiceHash,
+        dependencies: ApiServiceFamily._dependencies,
+        allTransitiveDependencies: ApiServiceFamily._allTransitiveDependencies,
+        environment: environment,
+      );
 
   ApiServiceProvider._internal(
     super._createNotifier, {
@@ -106,9 +95,7 @@ class ApiServiceProvider extends AutoDisposeProvider<ApiService> {
   final Environment environment;
 
   @override
-  Override overrideWith(
-    ApiService Function(ApiServiceRef provider) create,
-  ) {
+  Override overrideWith(ApiService Function(ApiServiceRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: ApiServiceProvider._internal(
@@ -156,5 +143,6 @@ class _ApiServiceProviderElement extends AutoDisposeProviderElement<ApiService>
   @override
   Environment get environment => (origin as ApiServiceProvider).environment;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

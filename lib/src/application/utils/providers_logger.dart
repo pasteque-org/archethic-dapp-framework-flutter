@@ -5,22 +5,23 @@ import 'package:logging/logging.dart';
 class ProvidersLogger extends ProviderObserver {
   @override
   void didAddProvider(
-    ProviderBase<Object?> provider,
-    Object? value,
-    ProviderContainer container,
+    final ProviderBase<Object?> provider,
+    final Object? value,
+    final ProviderContainer container,
   ) {
     if (provider.name != null) {
-      Logger('${DateFormat('yyyy-MM-dd HH:mm:ss.SSS').format(DateTime.now())} ${provider.name!}${provider.argument != null ? ':${provider.argument}' : ''}')
-          .info('didAddProvider($value)');
+      Logger(
+        '${DateFormat('yyyy-MM-dd HH:mm:ss.SSS').format(DateTime.now())} ${provider.name!}${provider.argument != null ? ':${provider.argument}' : ''}',
+      ).info('didAddProvider($value)');
     }
   }
 
   @override
   void didUpdateProvider(
-    ProviderBase<Object?> provider,
-    Object? previousValue,
-    Object? newValue,
-    ProviderContainer container,
+    final ProviderBase<Object?> provider,
+    final Object? previousValue,
+    final Object? newValue,
+    final ProviderContainer container,
   ) {
     if (provider.name != null) {
       Logger(provider.name!).info(
@@ -31,10 +32,10 @@ class ProvidersLogger extends ProviderObserver {
 
   @override
   void providerDidFail(
-    ProviderBase<Object?> provider,
-    Object error,
-    StackTrace stackTrace,
-    ProviderContainer container,
+    final ProviderBase<Object?> provider,
+    final Object error,
+    final StackTrace stackTrace,
+    final ProviderContainer container,
   ) {
     if (provider.name != null) {
       Logger(provider.name!).info(
@@ -44,7 +45,10 @@ class ProvidersLogger extends ProviderObserver {
   }
 
   @override
-  void didDisposeProvider(ProviderBase provider, ProviderContainer container) {
+  void didDisposeProvider(
+    final ProviderBase provider,
+    final ProviderContainer container,
+  ) {
     if (provider.name != null) {
       Logger(provider.name!).info(
         '${DateFormat('yyyy-MM-dd HH:mm:ss.SSS').format(DateTime.now())} didDisposeProvider',

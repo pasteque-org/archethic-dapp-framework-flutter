@@ -10,7 +10,7 @@ class TextFieldButton extends ConsumerWidget {
   final Function? onPressed;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     return SizedBox(
       height: 48,
       width: 48,
@@ -18,10 +18,7 @@ class TextFieldButton extends ConsumerWidget {
         onPressed: () {
           onPressed?.call();
         },
-        child: Icon(
-          icon,
-          size: 20,
-        ),
+        child: Icon(icon, size: 20),
       ),
     );
   }
@@ -98,7 +95,7 @@ class AppTextField extends ConsumerStatefulWidget {
 
 class _AppTextFieldState extends ConsumerState<AppTextField> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
         left: widget.leftMargin ?? MediaQuery.sizeOf(context).width * 0.105,
@@ -107,7 +104,8 @@ class _AppTextFieldState extends ConsumerState<AppTextField> {
       ),
       padding: widget.padding,
       width: double.infinity,
-      child: widget.overrideTextFieldWidget ??
+      child:
+          widget.overrideTextFieldWidget ??
           Stack(
             alignment: AlignmentDirectional.center,
             children: <Widget>[
@@ -124,43 +122,39 @@ class _AppTextFieldState extends ConsumerState<AppTextField> {
                 keyboardType: widget.keyboardType,
                 obscureText: widget.obscureText!,
                 autofocus: widget.autofocus!,
-                onFieldSubmitted: (String text) {
+                onFieldSubmitted: (final text) {
                   if (widget.textInputAction == TextInputAction.done) {
                     FocusScope.of(context).unfocus();
                   }
                 },
                 onChanged: widget.onChanged,
                 style: widget.style,
-                decoration: widget.prefixButton == null &&
-                        widget.suffixButton == null
-                    ? InputDecoration(
-                        labelText: widget.labelText ?? '',
-                      )
-                    : widget.prefixButton != null && widget.suffixButton == null
+                decoration:
+                    widget.prefixButton == null && widget.suffixButton == null
+                        ? InputDecoration(labelText: widget.labelText ?? '')
+                        : widget.prefixButton != null &&
+                            widget.suffixButton == null
                         ? InputDecoration(
-                            contentPadding: const EdgeInsets.only(right: 48),
-                            labelText: widget.labelText ?? '',
-                            prefixIcon: const SizedBox(width: 48, height: 48),
-                          )
+                          contentPadding: const EdgeInsets.only(right: 48),
+                          labelText: widget.labelText ?? '',
+                          prefixIcon: const SizedBox(width: 48, height: 48),
+                        )
                         : widget.prefixButton == null &&
-                                widget.suffixButton != null
-                            ? InputDecoration(
-                                contentPadding: const EdgeInsets.only(left: 48),
-                                labelText: widget.labelText ?? '',
-                                suffixIcon:
-                                    const SizedBox(width: 48, height: 48),
-                              )
-                            : InputDecoration(
-                                labelText: widget.labelText ?? '',
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 48,
-                                  maxHeight: 48,
-                                ),
-                                prefixIcon:
-                                    const SizedBox(width: 48, height: 48),
-                                suffixIcon:
-                                    const SizedBox(width: 48, height: 48),
-                              ),
+                            widget.suffixButton != null
+                        ? InputDecoration(
+                          contentPadding: const EdgeInsets.only(left: 48),
+                          labelText: widget.labelText ?? '',
+                          suffixIcon: const SizedBox(width: 48, height: 48),
+                        )
+                        : InputDecoration(
+                          labelText: widget.labelText ?? '',
+                          prefixIconConstraints: const BoxConstraints(
+                            minWidth: 48,
+                            maxHeight: 48,
+                          ),
+                          prefixIcon: const SizedBox(width: 48, height: 48),
+                          suffixIcon: const SizedBox(width: 48, height: 48),
+                        ),
               ),
               Positioned(
                 bottom: 1,
@@ -183,9 +177,10 @@ class _AppTextFieldState extends ConsumerState<AppTextField> {
                           ),
                           firstChild: widget.prefixButton!,
                           secondChild: const SizedBox(height: 48, width: 48),
-                          crossFadeState: widget.prefixShowFirstCondition!
-                              ? CrossFadeState.showFirst
-                              : CrossFadeState.showSecond,
+                          crossFadeState:
+                              widget.prefixShowFirstCondition!
+                                  ? CrossFadeState.showFirst
+                                  : CrossFadeState.showSecond,
                         )
                       else
                         widget.prefixButton ?? const SizedBox.shrink(),
@@ -198,9 +193,10 @@ class _AppTextFieldState extends ConsumerState<AppTextField> {
                           ),
                           firstChild: widget.suffixButton!,
                           secondChild: const SizedBox(height: 48, width: 48),
-                          crossFadeState: widget.suffixShowFirstCondition!
-                              ? CrossFadeState.showFirst
-                              : CrossFadeState.showSecond,
+                          crossFadeState:
+                              widget.suffixShowFirstCondition!
+                                  ? CrossFadeState.showFirst
+                                  : CrossFadeState.showSecond,
                         )
                       else
                         widget.suffixButton ?? const SizedBox.shrink(),

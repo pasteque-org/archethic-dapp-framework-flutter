@@ -6,15 +6,16 @@ part of 'ae_token_pair.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AETokenPairImpl _$$AETokenPairImplFromJson(Map<String, dynamic> json) =>
-    _$AETokenPairImpl(
-      token1: const AETokenJsonConverter()
-          .fromJson(json['token1'] as Map<String, dynamic>),
-      token2: const AETokenJsonConverter()
-          .fromJson(json['token2'] as Map<String, dynamic>),
-    );
+_AETokenPair _$AETokenPairFromJson(Map<String, dynamic> json) => _AETokenPair(
+  token1: const AETokenJsonConverter().fromJson(
+    json['token1'] as Map<String, dynamic>,
+  ),
+  token2: const AETokenJsonConverter().fromJson(
+    json['token2'] as Map<String, dynamic>,
+  ),
+);
 
-Map<String, dynamic> _$$AETokenPairImplToJson(_$AETokenPairImpl instance) =>
+Map<String, dynamic> _$AETokenPairToJson(_AETokenPair instance) =>
     <String, dynamic>{
       'token1': const AETokenJsonConverter().toJson(instance.token1),
       'token2': const AETokenJsonConverter().toJson(instance.token2),

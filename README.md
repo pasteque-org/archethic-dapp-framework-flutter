@@ -3,8 +3,8 @@ This project provides widgets to facilitate the creation of Archethic DApps
 
 ## Pre-requisites
 
-- Flutter 3.24+
-- Dart 3.5+
+- Flutter 3.29+
+- Dart 3.7+
 
 ## Arb file management
 

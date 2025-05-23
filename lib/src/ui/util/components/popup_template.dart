@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 class PopupTemplate extends StatelessWidget {
   const PopupTemplate({
-    super.key,
     required this.popupContent,
     required this.popupTitle,
+    super.key,
     this.popupHeight,
     this.warningCloseLabel = '',
     this.warningCloseFunction,
@@ -23,10 +23,10 @@ class PopupTemplate extends StatelessWidget {
   final bool displayCloseButton;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return ScaffoldMessenger(
       child: Builder(
-        builder: (context) {
+        builder: (final context) {
           return Scaffold(
             backgroundColor: Colors.transparent.withAlpha(120),
             body: AlertDialog(
@@ -40,39 +40,35 @@ class PopupTemplate extends StatelessWidget {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                       child: Container(
-                        margin:
-                            const EdgeInsets.only(top: 30, right: 15, left: 8),
+                        margin: const EdgeInsets.only(
+                          top: 30,
+                          right: 15,
+                          left: 8,
+                        ),
                         padding: const EdgeInsets.all(20),
                         height: popupHeight,
                         width: AppThemeBase.sizeBoxComponentWidth,
                         decoration: BoxDecoration(
                           color: AppThemeBase.sheetBackground,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: AppThemeBase.sheetBorder,
-                          ),
+                          border: Border.all(color: AppThemeBase.sheetBorder),
                         ),
-                        child: popupHeight == null
-                            ? SingleChildScrollView(
-                                child: Wrap(
-                                  children: [popupContent],
-                                ),
-                              )
-                            : popupContent,
+                        child:
+                            popupHeight == null
+                                ? SingleChildScrollView(
+                                  child: Wrap(children: [popupContent]),
+                                )
+                                : popupContent,
                       ),
                     ),
                   ),
                   Positioned(
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: SelectionArea(
                               child: Text(
                                 popupTitle,

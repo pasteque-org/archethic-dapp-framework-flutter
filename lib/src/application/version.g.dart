@@ -6,7 +6,7 @@ part of 'version.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$versionStringHash() => r'0bcb9712b9031c87cc3cc38dbc34cfb04956077b';
+String _$versionStringHash() => r'b2874cf0d9e8d2b961165ae2b6e151e99f0b95de';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,21 +39,15 @@ class VersionStringFamily extends Family<AsyncValue<String>> {
   const VersionStringFamily();
 
   /// See also [versionString].
-  VersionStringProvider call(
-    AppLocalizations localizations,
-  ) {
-    return VersionStringProvider(
-      localizations,
-    );
+  VersionStringProvider call(AppLocalizations localizations) {
+    return VersionStringProvider(localizations);
   }
 
   @override
   VersionStringProvider getProviderOverride(
     covariant VersionStringProvider provider,
   ) {
-    return call(
-      provider.localizations,
-    );
+    return call(provider.localizations);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class VersionStringFamily extends Family<AsyncValue<String>> {
 /// See also [versionString].
 class VersionStringProvider extends AutoDisposeFutureProvider<String> {
   /// See also [versionString].
-  VersionStringProvider(
-    AppLocalizations localizations,
-  ) : this._internal(
-          (ref) => versionString(
-            ref as VersionStringRef,
-            localizations,
-          ),
-          from: versionStringProvider,
-          name: r'versionStringProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$versionStringHash,
-          dependencies: VersionStringFamily._dependencies,
-          allTransitiveDependencies:
-              VersionStringFamily._allTransitiveDependencies,
-          localizations: localizations,
-        );
+  VersionStringProvider(AppLocalizations localizations)
+    : this._internal(
+        (ref) => versionString(ref as VersionStringRef, localizations),
+        from: versionStringProvider,
+        name: r'versionStringProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$versionStringHash,
+        dependencies: VersionStringFamily._dependencies,
+        allTransitiveDependencies:
+            VersionStringFamily._allTransitiveDependencies,
+        localizations: localizations,
+      );
 
   VersionStringProvider._internal(
     super._createNotifier, {
@@ -151,12 +141,14 @@ mixin VersionStringRef on AutoDisposeFutureProviderRef<String> {
 }
 
 class _VersionStringProviderElement
-    extends AutoDisposeFutureProviderElement<String> with VersionStringRef {
+    extends AutoDisposeFutureProviderElement<String>
+    with VersionStringRef {
   _VersionStringProviderElement(super.provider);
 
   @override
   AppLocalizations get localizations =>
       (origin as VersionStringProvider).localizations;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

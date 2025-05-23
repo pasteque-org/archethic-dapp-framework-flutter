@@ -7,7 +7,7 @@ part of 'coin_price.dart';
 // **************************************************************************
 
 String _$coinPriceRepositoryHash() =>
-    r'6dcbcdb051cb63028959c3e48c1456e63c39120d';
+    r'69c941f4de25760a9ffb5725ca536be4ea49d1ae';
 
 /// Provides an instance of [CoinPriceRepositoryImpl].
 ///
@@ -17,20 +17,21 @@ String _$coinPriceRepositoryHash() =>
 @ProviderFor(_coinPriceRepository)
 final _coinPriceRepositoryProvider =
     AutoDisposeProvider<CoinPriceRepositoryImpl>.internal(
-  _coinPriceRepository,
-  name: r'_coinPriceRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$coinPriceRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      _coinPriceRepository,
+      name: r'_coinPriceRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$coinPriceRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef _CoinPriceRepositoryRef
-    = AutoDisposeProviderRef<CoinPriceRepositoryImpl>;
-String _$coinPriceHash() => r'ae132cff68c2d792031208693b5023775e4a9cbb';
+typedef _CoinPriceRepositoryRef =
+    AutoDisposeProviderRef<CoinPriceRepositoryImpl>;
+String _$coinPriceHash() => r'06ce415937e98944d78b7e78d9e14aa148f4ff83';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -103,24 +104,15 @@ class _CoinPriceFamily extends Family<AsyncValue<double>> {
   /// ```
   ///
   /// Copied from [_coinPrice].
-  _CoinPriceProvider call({
-    required String address,
-    Environment? environment,
-  }) {
-    return _CoinPriceProvider(
-      address: address,
-      environment: environment,
-    );
+  _CoinPriceProvider call({required String address, Environment? environment}) {
+    return _CoinPriceProvider(address: address, environment: environment);
   }
 
   @override
   _CoinPriceProvider getProviderOverride(
     covariant _CoinPriceProvider provider,
   ) {
-    return call(
-      address: provider.address,
-      environment: provider.environment,
-    );
+    return call(address: provider.address, environment: provider.environment);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -161,27 +153,24 @@ class _CoinPriceProvider extends AutoDisposeFutureProvider<double> {
   /// ```
   ///
   /// Copied from [_coinPrice].
-  _CoinPriceProvider({
-    required String address,
-    Environment? environment,
-  }) : this._internal(
-          (ref) => _coinPrice(
-            ref as _CoinPriceRef,
-            address: address,
-            environment: environment,
-          ),
-          from: _coinPriceProvider,
-          name: r'_coinPriceProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$coinPriceHash,
-          dependencies: _CoinPriceFamily._dependencies,
-          allTransitiveDependencies:
-              _CoinPriceFamily._allTransitiveDependencies,
+  _CoinPriceProvider({required String address, Environment? environment})
+    : this._internal(
+        (ref) => _coinPrice(
+          ref as _CoinPriceRef,
           address: address,
           environment: environment,
-        );
+        ),
+        from: _coinPriceProvider,
+        name: r'_coinPriceProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$coinPriceHash,
+        dependencies: _CoinPriceFamily._dependencies,
+        allTransitiveDependencies: _CoinPriceFamily._allTransitiveDependencies,
+        address: address,
+        environment: environment,
+      );
 
   _CoinPriceProvider._internal(
     super._createNotifier, {
@@ -259,7 +248,7 @@ class _CoinPriceProviderElement extends AutoDisposeFutureProviderElement<double>
 }
 
 String _$coinPricesNotifierHash() =>
-    r'b3a6a14230dab614d3b92c766fb43598417597fb';
+    r'27a528b58e8dcb92f6596e91b2d08e28a0dffdff';
 
 /// A notifier responsible for managing and updating cryptocurrency prices.
 ///
@@ -270,14 +259,15 @@ String _$coinPricesNotifierHash() =>
 @ProviderFor(_CoinPricesNotifier)
 final _coinPricesNotifierProvider =
     AutoDisposeNotifierProvider<_CoinPricesNotifier, CryptoPrice>.internal(
-  _CoinPricesNotifier.new,
-  name: r'_coinPricesNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$coinPricesNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      _CoinPricesNotifier.new,
+      name: r'_coinPricesNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$coinPricesNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CoinPricesNotifier = AutoDisposeNotifier<CryptoPrice>;
 // ignore_for_file: type=lint

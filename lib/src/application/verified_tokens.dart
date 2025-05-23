@@ -9,8 +9,8 @@ part 'verified_tokens.g.dart';
 
 @riverpod
 VerifiedTokensRepositoryInterface _verifiedTokensRepository(
-  Ref ref,
-  Environment environment,
+  final Ref ref,
+  final Environment environment,
 ) {
   final apiService = ref.watch(apiServiceProvider(environment));
   return VerifiedTokensRepositoryImpl(
@@ -21,9 +21,9 @@ VerifiedTokensRepositoryInterface _verifiedTokensRepository(
 
 @riverpod
 Future<List<String>> _verifiedTokensByNetwork(
-  Ref ref,
-  Environment environment,
-) async {
+  final Ref ref,
+  final Environment environment,
+) {
   return ref
       .watch(_verifiedTokensRepositoryProvider(environment))
       .getVerifiedTokens();
@@ -31,12 +31,13 @@ Future<List<String>> _verifiedTokensByNetwork(
 
 @riverpod
 Future<bool> _isVerifiedToken(
-  Ref ref,
-  Environment environment,
-  String address,
+  final Ref ref,
+  final Environment environment,
+  final String address,
 ) async {
-  final verifiedTokens =
-      await ref.watch(_verifiedTokensByNetworkProvider(environment).future);
+  final verifiedTokens = await ref.watch(
+    _verifiedTokensByNetworkProvider(environment).future,
+  );
   return ref
       .watch(_verifiedTokensRepositoryProvider(environment))
       .isVerifiedToken(address, verifiedTokens);

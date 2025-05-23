@@ -17,10 +17,7 @@ part 'ae_token.g.dart';
 /// final priceInFiat = await ref.read(estimateTokenInFiatProvider(token));
 /// ```
 @riverpod
-Future<double> _estimateTokenInFiat(
-  Ref ref,
-  AEToken token,
-) async {
+Future<double> _estimateTokenInFiat(final Ref ref, final AEToken token) async {
   if (token.symbol == 'UCO') {
     // Fetch the UCO price from the Archethic Oracle.
     final archethicOracleUCO = await ref.watch(

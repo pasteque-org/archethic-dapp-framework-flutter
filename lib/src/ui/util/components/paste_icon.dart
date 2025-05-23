@@ -5,21 +5,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PasteIcon extends TextFieldButton {
-  const PasteIcon({
-    super.key,
-    required this.onPaste,
-    this.onDataNull,
-  });
+  const PasteIcon({required this.onPaste, super.key, this.onDataNull});
 
   final Function(String value) onPaste;
   final Function()? onDataNull;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     return TextFieldButton(
       icon: Iconsax.document_normal,
-      onPressed: () {
-        Clipboard.getData('text/plain').then((ClipboardData? data) async {
+      onPressed: () async {
+        await Clipboard.getData('text/plain').then((final data) {
           if (data == null || data.text == null) {
             onDataNull?.call();
             return;

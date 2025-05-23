@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,184 +10,146 @@ part of 'market_price_history.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PriceHistoryValue _$PriceHistoryValueFromJson(Map<String, dynamic> json) {
-  return _PriceHistoryValue.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PriceHistoryValue {
-  /// The price of the asset at the specified time.
-  num get price => throw _privateConstructorUsedError;
 
-  /// The timestamp for the price entry.
-  DateTime get time => throw _privateConstructorUsedError;
+/// The price of the asset at the specified time.
+ num get price;/// The timestamp for the price entry.
+ DateTime get time;
+/// Create a copy of PriceHistoryValue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PriceHistoryValueCopyWith<PriceHistoryValue> get copyWith => _$PriceHistoryValueCopyWithImpl<PriceHistoryValue>(this as PriceHistoryValue, _$identity);
 
   /// Serializes this PriceHistoryValue to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PriceHistoryValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PriceHistoryValueCopyWith<PriceHistoryValue> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PriceHistoryValue&&(identical(other.price, price) || other.price == price)&&(identical(other.time, time) || other.time == time));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,price,time);
+
+@override
+String toString() {
+  return 'PriceHistoryValue(price: $price, time: $time)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PriceHistoryValueCopyWith<$Res> {
-  factory $PriceHistoryValueCopyWith(
-          PriceHistoryValue value, $Res Function(PriceHistoryValue) then) =
-      _$PriceHistoryValueCopyWithImpl<$Res, PriceHistoryValue>;
-  @useResult
-  $Res call({num price, DateTime time});
-}
+abstract mixin class $PriceHistoryValueCopyWith<$Res>  {
+  factory $PriceHistoryValueCopyWith(PriceHistoryValue value, $Res Function(PriceHistoryValue) _then) = _$PriceHistoryValueCopyWithImpl;
+@useResult
+$Res call({
+ num price, DateTime time
+});
 
+
+
+
+}
 /// @nodoc
-class _$PriceHistoryValueCopyWithImpl<$Res, $Val extends PriceHistoryValue>
+class _$PriceHistoryValueCopyWithImpl<$Res>
     implements $PriceHistoryValueCopyWith<$Res> {
-  _$PriceHistoryValueCopyWithImpl(this._value, this._then);
+  _$PriceHistoryValueCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PriceHistoryValue _self;
+  final $Res Function(PriceHistoryValue) _then;
 
-  /// Create a copy of PriceHistoryValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? time = null,
-  }) {
-    return _then(_value.copyWith(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as num,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
+/// Create a copy of PriceHistoryValue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? price = null,Object? time = null,}) {
+  return _then(_self.copyWith(
+price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as num,time: null == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PriceHistoryValueImplCopyWith<$Res>
-    implements $PriceHistoryValueCopyWith<$Res> {
-  factory _$$PriceHistoryValueImplCopyWith(_$PriceHistoryValueImpl value,
-          $Res Function(_$PriceHistoryValueImpl) then) =
-      __$$PriceHistoryValueImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({num price, DateTime time});
 }
 
-/// @nodoc
-class __$$PriceHistoryValueImplCopyWithImpl<$Res>
-    extends _$PriceHistoryValueCopyWithImpl<$Res, _$PriceHistoryValueImpl>
-    implements _$$PriceHistoryValueImplCopyWith<$Res> {
-  __$$PriceHistoryValueImplCopyWithImpl(_$PriceHistoryValueImpl _value,
-      $Res Function(_$PriceHistoryValueImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PriceHistoryValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? time = null,
-  }) {
-    return _then(_$PriceHistoryValueImpl(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as num,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$PriceHistoryValueImpl implements _PriceHistoryValue {
-  const _$PriceHistoryValueImpl({required this.price, required this.time});
 
-  factory _$PriceHistoryValueImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PriceHistoryValueImplFromJson(json);
+class _PriceHistoryValue implements PriceHistoryValue {
+  const _PriceHistoryValue({required this.price, required this.time});
+  factory _PriceHistoryValue.fromJson(Map<String, dynamic> json) => _$PriceHistoryValueFromJson(json);
 
-  /// The price of the asset at the specified time.
-  @override
-  final num price;
+/// The price of the asset at the specified time.
+@override final  num price;
+/// The timestamp for the price entry.
+@override final  DateTime time;
 
-  /// The timestamp for the price entry.
-  @override
-  final DateTime time;
+/// Create a copy of PriceHistoryValue
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PriceHistoryValueCopyWith<_PriceHistoryValue> get copyWith => __$PriceHistoryValueCopyWithImpl<_PriceHistoryValue>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'PriceHistoryValue(price: $price, time: $time)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PriceHistoryValueImpl &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.time, time) || other.time == time));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, price, time);
-
-  /// Create a copy of PriceHistoryValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PriceHistoryValueImplCopyWith<_$PriceHistoryValueImpl> get copyWith =>
-      __$$PriceHistoryValueImplCopyWithImpl<_$PriceHistoryValueImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PriceHistoryValueImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PriceHistoryValueToJson(this, );
 }
 
-abstract class _PriceHistoryValue implements PriceHistoryValue {
-  const factory _PriceHistoryValue(
-      {required final num price,
-      required final DateTime time}) = _$PriceHistoryValueImpl;
-
-  factory _PriceHistoryValue.fromJson(Map<String, dynamic> json) =
-      _$PriceHistoryValueImpl.fromJson;
-
-  /// The price of the asset at the specified time.
-  @override
-  num get price;
-
-  /// The timestamp for the price entry.
-  @override
-  DateTime get time;
-
-  /// Create a copy of PriceHistoryValue
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PriceHistoryValueImplCopyWith<_$PriceHistoryValueImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PriceHistoryValue&&(identical(other.price, price) || other.price == price)&&(identical(other.time, time) || other.time == time));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,price,time);
+
+@override
+String toString() {
+  return 'PriceHistoryValue(price: $price, time: $time)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PriceHistoryValueCopyWith<$Res> implements $PriceHistoryValueCopyWith<$Res> {
+  factory _$PriceHistoryValueCopyWith(_PriceHistoryValue value, $Res Function(_PriceHistoryValue) _then) = __$PriceHistoryValueCopyWithImpl;
+@override @useResult
+$Res call({
+ num price, DateTime time
+});
+
+
+
+
+}
+/// @nodoc
+class __$PriceHistoryValueCopyWithImpl<$Res>
+    implements _$PriceHistoryValueCopyWith<$Res> {
+  __$PriceHistoryValueCopyWithImpl(this._self, this._then);
+
+  final _PriceHistoryValue _self;
+  final $Res Function(_PriceHistoryValue) _then;
+
+/// Create a copy of PriceHistoryValue
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? price = null,Object? time = null,}) {
+  return _then(_PriceHistoryValue(
+price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as num,time: null == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+
+}
+
+// dart format on

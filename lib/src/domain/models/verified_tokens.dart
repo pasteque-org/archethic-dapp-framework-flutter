@@ -15,20 +15,20 @@ part 'verified_tokens.g.dart';
 /// );
 /// ```
 @freezed
-class VerifiedTokens with _$VerifiedTokens {
+abstract class VerifiedTokens with _$VerifiedTokens {
   /// Creates a new [VerifiedTokens] instance.
   ///
   /// [devnet] is required and contains a list of verified token identifiers
   /// for the Devnet environment.
   const factory VerifiedTokens({
     /// A list of verified token identifiers on the Devnet.
-    required List<String> devnet,
+    required final List<String> devnet,
   }) = _VerifiedTokens;
 
   /// Creates a [VerifiedTokens] instance from a JSON object.
   ///
   /// This factory method is used to deserialize JSON data into a
   /// [VerifiedTokens] instance.
-  factory VerifiedTokens.fromJson(Map<String, dynamic> json) =>
+  factory VerifiedTokens.fromJson(final Map<String, dynamic> json) =>
       _$VerifiedTokensFromJson(json);
 }

@@ -21,16 +21,18 @@ class PopupCloseButton extends StatelessWidget {
   final Function? closeFunction;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: InkWell(
         onTap: () async {
-          if (warningCloseWarning == false) {
+          if (!warningCloseWarning) {
             if (closeFunction != null) {
               await closeFunction!();
             } else {
-              if (!context.mounted) return;
+              if (!context.mounted) {
+                return;
+              }
               Navigator.of(context).pop();
             }
             return;
@@ -38,14 +40,12 @@ class PopupCloseButton extends StatelessWidget {
 
           return showDialog(
             context: context,
-            builder: (context) {
+            builder: (final context) {
               return PopupTemplate(
                 displayCloseButton: false,
                 popupContent: Container(
                   color: Colors.transparent,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -57,28 +57,24 @@ class PopupCloseButton extends StatelessWidget {
                           style: Theme.of(
                             context,
                           ).textTheme.bodyMedium!.copyWith(
-                                fontSize: Responsive.fontSizeFromTextStyle(
-                                  context,
-                                  Theme.of(context).textTheme.bodyMedium!,
-                                ),
-                              ),
+                            fontSize: Responsive.fontSizeFromTextStyle(
+                              context,
+                              Theme.of(context).textTheme.bodyMedium!,
+                            ),
+                          ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.only(
-                          bottom: 20,
-                        ),
+                        padding: const EdgeInsets.only(bottom: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AppButton(
                               labelBtn:
                                   AppLocalizations.of(context)!.aedappfm_no,
-                              onPressed: () async {
+                              onPressed: () {
                                 Navigator.of(context).pop();
                               },
                             ),
@@ -90,7 +86,9 @@ class PopupCloseButton extends StatelessWidget {
                                   await warningCloseFunction!();
                                 }
 
-                                if (!context.mounted) return;
+                                if (!context.mounted) {
+                                  return;
+                                }
                                 Navigator.of(context).pop();
                               },
                             ),
@@ -100,8 +98,10 @@ class PopupCloseButton extends StatelessWidget {
                     ],
                   ),
                 ),
-                popupTitle: AppLocalizations.of(context)!
-                    .aedappfm_confirmationPopupTitle,
+                popupTitle:
+                    AppLocalizations.of(
+                      context,
+                    )!.aedappfm_confirmationPopupTitle,
                 popupHeight: 180,
               );
             },
@@ -113,10 +113,7 @@ class PopupCloseButton extends StatelessWidget {
           child: const CircleAvatar(
             foregroundColor: Colors.white,
             radius: 12,
-            child: IconAnimated(
-              color: Colors.white,
-              icon: Icons.close,
-            ),
+            child: IconAnimated(color: Colors.white, icon: Icons.close),
           ),
         ),
       ),
